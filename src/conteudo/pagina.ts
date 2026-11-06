@@ -35,7 +35,7 @@ export const pagina = {
   },
   contato: {
     legenda: "Continua…",
-    titulo: "Tem uma vaga? Bora conversar.",
+    titulo: "Vamos conversar sobre a sua vaga.",
     texto: "Estou aberto a vagas de desenvolvedor full-stack ou back-end. A forma mais rápida de falar comigo é por e-mail.",
   },
 };
