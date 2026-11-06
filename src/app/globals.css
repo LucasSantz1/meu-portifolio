@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/*
+ * Identidade visual
+ * - Base: sistema monocromático no estilo Geist (Vercel): papel claro, tinta quase preta,
+ *   linhas finas no lugar de sombras, raio pequeno e fonte mono só para metadados.
+ * - Destaque: o verde-energia do meu projeto de Eficiência Energética. Ele aparece só em
+ *   links, no ponto de status e nas confirmações (✓), nunca como fundo de seção.
+ * - Moldura de "planta técnica": linhas verticais nas bordas do conteúdo e cruzinhas (+)
+ *   onde as seções começam.
+ */
+
+:root {
+  --canvas: #fafafa;
+  --surface: #ffffff;
+  --ink: #171717;
+  --body: #4d4d4d;
+  --muted: #666666;
+  --faint: #8f8f8f;
+  --hairline: #ebebeb;
+  --line: #dedede;
+  --accent: #0a7356;
+  --accent-soft: #dcefe6;
+  --contrast: #171717;
+  --on-contrast: #fafafa;
+  --on-contrast-muted: #a1a1a1;
+  --on-contrast-line: #333333;
+  color-scheme: light;
+}
+
+/* Modo escuro: segue o sistema, a não ser que a pessoa escolha "claro" no seletor. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --canvas: #0a0a0a;
+    --surface: #111111;
+    --ink: #ededed;
+    --body: #a1a1a1;
+    --muted: #8f8f8f;
+    --faint: #707070;
+    --hairline: #1f1f1f;
+    --line: #2e2e2e;
+    --accent: #3dbb8c;
+    --accent-soft: #10291f;
+    --contrast: #ededed;
+    --on-contrast: #0a0a0a;
+    --on-contrast-muted: #4d4d4d;
+    --on-contrast-line: #d4d4d4;
+    color-scheme: dark;
+  }
+}
+:root[data-tema="escuro"] {
+  --canvas: #0a0a0a;
+  --surface: #111111;
+  --ink: #ededed;
+  --body: #a1a1a1;
+  --muted: #8f8f8f;
+  --faint: #707070;
+  --hairline: #1f1f1f;
+  --line: #2e2e2e;
+  --accent: #3dbb8c;
+  --accent-soft: #10291f;
+  --contrast: #ededed;
+  --on-contrast: #0a0a0a;
+  --on-contrast-muted: #4d4d4d;
+  --on-contrast-line: #d4d4d4;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-hairline: var(--hairline);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-contrast: var(--contrast);
+  --color-on-contrast: var(--on-contrast);
+  --color-on-contrast-muted: var(--on-contrast-muted);
+  --color-on-contrast-line: var(--on-contrast-line);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--canvas);
+  }
+  body {
+    background: var(--canvas);
+    color: var(--body);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* Etiqueta em mono: metadados, rótulos e números de seção. */
+@utility rotulo {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* Títulos grandes: peso médio e espaçamento apertado, como no Geist. */
+@utility titulo-display {
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+@utility titulo-secao {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+/* Moldura de planta técnica: linhas verticais nas laterais do conteúdo. */
+@utility moldura {
+  border-inline: 1px solid var(--hairline);
+}
+
+/* Cruzinha (+) no canto onde a seção encontra a moldura. */
+@utility cruz {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  background:
+    linear-gradient(var(--faint), var(--faint)) center / 1px 100% no-repeat,
+    linear-gradient(var(--faint), var(--faint)) center / 100% 1px no-repeat;
+}
+
+/* Grade bem sutil só no topo da página. */
+@utility grade-fundo {
+  background-image:
+    linear-gradient(to right, var(--hairline) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
