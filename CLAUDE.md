@@ -22,7 +22,7 @@ O design é o pacote **"Teia de Sistemas"** em `design/teia-de-sistemas/`. Ele �
 3. **Stack:** `developer.ts` com a stack e um terminal com formação e certificados.
 4. **Trajetória:** 5 quadros numerados. O atual fica em destaque.
 5. **Fora do código:** o texto, as 4 polaroids e a estante, que só aparece quando `livros` tem itens.
-6. **Contato:** `contato.exe`, que monta um `mailto:`, mais o e-mail e os links.
+6. **Rodapé:** nome, ano e o e-mail. A seção de contato foi removida a pedido do Lucas; o contato fica nos botões do topo e no rodapé.
 
 Por toda a página: o fio de progresso no topo, o fio da teia na lateral, que se desenha com a rolagem, e o botão de voltar ao topo. Há também a página 404 (`src/app/not-found.tsx`).
 
@@ -40,18 +40,16 @@ src/
     pagina.ts         legendas, títulos e textos fixos de cada parte, e os textos das ilustrações
     projetos.ts       lista de projetos (tipo Projeto), fonte da verdade dos textos dos projetos
     carreira.ts       stack (developer.ts), trajetória, formação, certificados e livros
-  componentes/        uma seção por arquivo (Hero, Projetos, Stack, Trajetoria, Sobre, Contato...)
+  componentes/        uma seção por arquivo (Hero, Projetos, Stack, Trajetoria, Sobre, Rodape...)
     Capitulo.tsx      cabeçalho de capítulo: teia presa ao fio, legenda e título
     teia.ts           geometria da teia (usada na abertura, no topo e na 404)
-    mailto.ts         monta o link do contato (com teste em mailto.test.ts)
 public/
   curriculo-lucas-santanna.pdf
 ```
 
 - **Regra:** texto novo vai em `src/conteudo/`, nunca escrito direto nos componentes.
 - Nomes de variáveis, componentes e textos em **português**.
-- **Client components:** `Abertura`, `SeletorTema`, `HeroInterativo` (teia segue o mouse), `EditorProjetos` (abas), `ContatoExe`, `VoltarAoTopo` e `TransicaoTeia` (a teia que cobre a tela e a seção que desenrola ao navegar pelo menu). O resto é renderizado no build.
-- **Testes:** `npm test`.
+- **Client components:** `Abertura`, `SeletorTema`, `HeroInterativo` (teia segue o mouse), `EditorProjetos` (abas), `PlayerMusica`, `VoltarAoTopo` e `TransicaoTeia` (a teia que cobre a tela e a seção que desenrola ao navegar pelo menu). O resto é renderizado no build.
 
 ## Design (manter)
 

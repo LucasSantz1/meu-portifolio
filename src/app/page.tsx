@@ -1,9 +1,9 @@
 import { Abertura } from "@/componentes/Abertura";
 import { BalaoMusica } from "@/componentes/BalaoMusica";
 import { Cabecalho } from "@/componentes/Cabecalho";
-import { Contato, Rodape } from "@/componentes/Contato";
 import { Hero } from "@/componentes/Hero";
 import { Projetos } from "@/componentes/Projetos";
+import { Rodape } from "@/componentes/Rodape";
 import { Sobre } from "@/componentes/Sobre";
 import { Stack } from "@/componentes/Stack";
 import { TransicaoTeia } from "@/componentes/TransicaoTeia";
@@ -32,7 +32,6 @@ export default function Inicio() {
           <Stack />
           <Trajetoria />
           <Sobre />
-          <Contato />
         </div>
         <Rodape />
       </main>

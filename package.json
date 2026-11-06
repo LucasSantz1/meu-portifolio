@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
-    "typecheck": "tsc --noEmit",
-    "test": "node --test src/componentes/mailto.test.ts"
+    "typecheck": "tsc --noEmit"
   },
   "engines": {
     "node": ">=20"

@@ -7,7 +7,6 @@ export const pagina = {
     { href: "#stack", rotulo: "Stack" },
     { href: "#trajetoria", rotulo: "Trajetória" },
     { href: "#sobre", rotulo: "Sobre mim" },
-    { href: "#contato", rotulo: "Contato" },
   ],
   hero: {
     legenda: "Enquanto isso, em Presidente Prudente…",
@@ -38,15 +37,6 @@ export const pagina = {
     legenda: "Fora do expediente…",
     titulo: "Fora do código",
     estante: "Na estante",
-  },
-  contato: {
-    legenda: "E agora…",
-    titulo: "Bora construir algo?",
-    texto: "Estou aberto a vagas de desenvolvedor full-stack ou back-end. Pode me chamar direto também:",
-    botao: "Abrir no meu e-mail",
-    ajuda: "Abre o seu app de e-mail com a mensagem pronta.",
-    assunto: "Contato pelo portfólio",
-    campos: { nome: "seu nome", email: "voce@empresa.com", mensagem: "Conta o que você está construindo." },
   },
   rodape: "feito com teia e código",
   // Balão de música no canto inferior esquerdo. Só aparece quando o arquivo existir em public/.
