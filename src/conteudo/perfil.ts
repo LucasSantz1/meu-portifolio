@@ -22,12 +22,13 @@ export const perfil = {
 };
 
 // "Fora do código": o texto e as polaroids. Quando tiver a foto, coloque em public/fotos/ e preencha `foto`.
+// `verso`: a frase escrita atrás da polaroid, que aparece quando ela vira.
 export const sobre = {
   texto: "Tenho 23 anos, moro em Presidente Prudente e falo inglês e espanhol. Quando desligo o computador, é aqui que eu estou:",
   polaroids: [
-    { legenda: "Jogando bola com os amigos", icone: "bola", foto: null as string | null },
-    { legenda: "Com a família e a namorada", icone: "coracao", foto: null as string | null },
-    { legenda: "Na igreja", icone: "igreja", foto: null as string | null },
-    { legenda: "Lendo um livro", icone: "livro", foto: null as string | null },
+    { legenda: "Jogando bola com os amigos", verso: "Jogar bola é o meu jeito de desligar a cabeça.", icone: "bola", foto: null as string | null },
+    { legenda: "Com a família e a namorada", verso: "O tempo com a família e com a namorada vem em primeiro lugar.", icone: "coracao", foto: null as string | null },
+    { legenda: "Na igreja", verso: "Sou católico e participo da vida da minha igreja.", icone: "igreja", foto: null as string | null },
+    { legenda: "Lendo um livro", verso: "Sempre tem um livro em andamento.", icone: "livro", foto: null as string | null },
   ] as const,
 };

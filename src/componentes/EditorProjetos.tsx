@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ilustracoes, pagina } from "@/conteudo/pagina";
 import { perfil } from "@/conteudo/perfil";
 import { projetos, type Projeto } from "@/conteudo/projetos";
+import { Inclina3D } from "./Inclina3D";
 
 const t = pagina.projetos;
 
@@ -155,6 +156,7 @@ export function EditorProjetos() {
   }
 
   return (
+    <Inclina3D max={6} className="editor-3d">
     <div className="ide panel">
       <div className="ide-bar">
         <span className="ide-caminho mono">
@@ -206,7 +208,7 @@ export function EditorProjetos() {
         </nav>
         <div key={projeto.slug} id="painel-projeto" className="ide-main vira-pagina" role="tabpanel" aria-labelledby={`aba-${projeto.slug}`}>
           <Readme projeto={projeto} />
-          <div>
+          <div className="ide-previa">
             <p className="preview-label mono">{t.previa}</p>
             <Previa projeto={projeto} />
           </div>
@@ -220,5 +222,6 @@ export function EditorProjetos() {
         <span>{projeto.stack.length > 0 ? projeto.stack.slice(0, 4).join(", ") : projeto.tipo}</span>
       </div>
     </div>
+    </Inclina3D>
   );
 }

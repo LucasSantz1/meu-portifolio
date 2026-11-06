@@ -1,6 +1,7 @@
 import { trajetoria } from "@/conteudo/carreira";
 import { pagina } from "@/conteudo/pagina";
 import { Capitulo } from "./Capitulo";
+import { Inclina3D } from "./Inclina3D";
 
 // Explosão de HQ (estrela de 14 pontas) atrás da onomatopeia.
 const pontas = Array.from({ length: 28 }, (_, i) => {
@@ -25,6 +26,7 @@ function Som({ texto }: { texto: string }) {
 export function Trajetoria() {
   return (
     <Capitulo id="trajetoria" legenda={pagina.trajetoria.legenda} titulo={pagina.trajetoria.titulo}>
+      <Inclina3D max={7} className="trajetoria-3d">
       <ol className="hq-pagina">
         {trajetoria.map((q, i) => (
           <li key={q.titulo} className={`hq-quadro q${i + 1} ${q.atual ? "atual" : ""}`}>
@@ -60,6 +62,7 @@ export function Trajetoria() {
           </li>
         ))}
       </ol>
+      </Inclina3D>
     </Capitulo>
   );
 }

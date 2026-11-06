@@ -56,7 +56,7 @@ export function Sobre() {
             {sobre.polaroids.map((p, i) => {
               const a = album[i % album.length];
               return (
-                <figure key={p.legenda} className={`pendurada ${a.voo}`} style={{ marginTop: temLivros ? a.topo : 0 }}>
+                <figure key={p.legenda} className={`pendurada ${a.voo}`} style={{ marginTop: temLivros ? a.topo : 0 }} tabIndex={0}>
                   <svg className="no-teia" viewBox="0 0 34 34" aria-hidden>
                     <g fill="none" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M17 17L17 0M17 17L2 4M17 17L32 4M17 17L0 20M17 17L34 20" />
@@ -67,6 +67,8 @@ export function Sobre() {
                   <div className="polaroid" style={{ "--rot": a.rot, "--atraso": `${-i * 1.4}s` } as React.CSSProperties}>
                   <span className="polaroid-fio" aria-hidden />
                   <span className="tape-bit" aria-hidden style={{ rotate: a.fita }} />
+                  <div className="polaroid-giro">
+                  <div className="face frente">
                   <div className="photo">
                     {p.foto ? (
                       // eslint-disable-next-line @next/next/no-img-element
@@ -78,6 +80,9 @@ export function Sobre() {
                     )}
                   </div>
                   <figcaption>{p.legenda}</figcaption>
+                  </div>
+                  <p className="face verso">{p.verso}</p>
+                  </div>
                   </div>
                 </figure>
               );
