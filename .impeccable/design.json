@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T16:00:00Z",
+  "title": "Design System: Lucas Sant'Anna · Portfólio",
+  "extensions": {
+    "colorMeta": {
+      "vermelho": { "role": "primary", "displayName": "Vermelho de ação", "cssVar": "--vermelho", "tonalRamp": ["#3d0306", "#62060b", "#8a0b11", "#b01117", "#c8141b", "#e3474a", "#f19b9a", "#fbe2e1"] },
+      "vermelho-escuro": { "role": "primary", "displayName": "Vermelho de ação (escuro)", "cssVar": "--vermelho" },
+      "vermelho-fundo-escuro": { "role": "primary", "displayName": "Vermelho de fundo (escuro)", "cssVar": "--vermelho-fundo" },
+      "sobre-vermelho": { "role": "primary", "displayName": "Branco sobre vermelho", "cssVar": "--sobre-vermelho" },
+      "amarelo": { "role": "secondary", "displayName": "Amarelo de legenda", "cssVar": "--amarelo", "tonalRamp": ["#3d3200", "#665300", "#8f7400", "#c29e00", "#ffd60a", "#ffe24f", "#ffee99", "#fff9dd"] },
+      "sobre-amarelo": { "role": "secondary", "displayName": "Tinta sobre amarelo", "cssVar": "--sobre-amarelo" },
+      "ciano": { "role": "tertiary", "displayName": "Chapa ciano", "cssVar": "--ciano", "tonalRamp": ["#002a38", "#00445b", "#00607f", "#0083ae", "#00a6dd", "#4cc3eb", "#99def5", "#e0f5fc"] },
+      "ciano-escuro": { "role": "tertiary", "displayName": "Chapa ciano (escuro)", "cssVar": "--ciano" },
+      "magenta": { "role": "tertiary", "displayName": "Chapa magenta", "cssVar": "--magenta", "tonalRamp": ["#3a0020", "#5e0033", "#850048", "#b30061", "#e4007c", "#ee4da3", "#f699cb", "#fde0ef"] },
+      "magenta-escuro": { "role": "tertiary", "displayName": "Chapa magenta (escuro)", "cssVar": "--magenta" },
+      "canvas": { "role": "neutral", "displayName": "Papel cinza-claro", "cssVar": "--canvas" },
+      "surface": { "role": "neutral", "displayName": "Quadro branco", "cssVar": "--surface" },
+      "ink": { "role": "neutral", "displayName": "Tinta", "cssVar": "--ink", "note": "Também é o contorno dos quadros (--borda) no claro.", "tonalRamp": ["#141414", "#2a2a2c", "#36373b", "#595b61", "#8a8c92", "#d2d4d8", "#eeeff0", "#ffffff"] },
+      "body": { "role": "neutral", "displayName": "Texto", "cssVar": "--body" },
+      "muted": { "role": "neutral", "displayName": "Apagado", "cssVar": "--muted" },
+      "line": { "role": "neutral", "displayName": "Fio fino", "cssVar": "--line" },
+      "canvas-escuro": { "role": "neutral", "displayName": "Papel noturno", "cssVar": "--canvas" },
+      "surface-escuro": { "role": "neutral", "displayName": "Quadro noturno", "cssVar": "--surface" },
+      "ink-escuro": { "role": "neutral", "displayName": "Tinta clara", "cssVar": "--ink", "note": "Também é o contorno dos quadros (--borda) no escuro." },
+      "body-escuro": { "role": "neutral", "displayName": "Texto (escuro)", "cssVar": "--body" },
+      "muted-escuro": { "role": "neutral", "displayName": "Apagado (escuro)", "cssVar": "--muted" },
+      "line-escuro": { "role": "neutral", "displayName": "Fio fino (escuro)", "cssVar": "--line" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (capa)", "purpose": "Só o nome no topo, com desalinhamento de chapas. 3.5rem / 4.5rem (640px) / 6rem (1024px)." },
+      "headline": { "displayName": "Headline", "purpose": "Títulos de seção (2.75rem / 4rem) e nome do carro-chefe (2.25rem / 3.25rem), com desalinhamento." },
+      "title": { "displayName": "Title", "purpose": "Subtítulos em Anton limpo, sem chapas. 1.5rem; nomes em linha e cargos 1.625rem / 1.875rem." },
+      "body": { "displayName": "Body", "purpose": "Texto corrido em Geist; 15px em listas e estudos de caso." },
+      "body-lead": { "displayName": "Abertura", "purpose": "Chamada, resumos e descrições de seção." },
+      "label": { "displayName": "Rótulo", "purpose": "Metadados, termos de definição, datas e rodapé, em Geist Mono caixa alta." },
+      "legenda": { "displayName": "Legenda", "purpose": "Só dentro da caixa de legenda amarela." }
+    },
+    "shadows": [
+      { "name": "registro-chapas", "value": "-0.04em 0 0 var(--ciano), 0.04em 0.02em 0 var(--magenta)", "purpose": "text-shadow do titulo-hq: desalinhamento de impressão, não elevação. Não existe box-shadow no sistema." }
+    ],
+    "textures": [
+      { "name": "reticula", "value": "background-image: radial-gradient(var(--ponto) 1.9px, transparent 2.1px); background-size: 8px 8px", "purpose": "Retícula Ben-Day em área sem texto. --ponto: rgb(20 20 20 / 0.3) no claro, rgb(255 255 255 / 0.18) no escuro." }
+    ],
+    "motion": [
+      { "name": "transicao-cor", "value": "color, background-color, text-decoration-color 150ms", "purpose": "Única transição de estado (hover de links, botões e seletor)." },
+      { "name": "entra-registro", "value": "registro 480ms steps(4, end) both", "purpose": "Único momento autoral: o nome do topo acerta as chapas de 0.14em para 0.04em. Só com prefers-reduced-motion: no-preference." },
+      { "name": "abre-estudo", "value": "rotate(45deg) no ícone + do <details> aberto", "purpose": "Abertura do estudo de caso." }
+    ],
+    "focus": { "value": "outline: 3px solid var(--vermelho); outline-offset: 3px; border-radius: 2px", "purpose": "Foco visível em todos os elementos." },
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "conteudo-max", "value": "1240px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão principal",
+      "kind": "button",
+      "refersTo": "botao-principal",
+      "description": "Ação primária do topo (Ver projetos), vermelho chapado com contorno de tinta.",
+      "html": "<a class=\"ds-botao\" href=\"#\">Ver projetos <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14\"/><path d=\"m19 12-7 7-7-7\"/></svg></a>",
+      "css": ".ds-botao { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 20px; border: 3px solid var(--borda, #141414); border-radius: 4px; background: var(--vermelho-fundo, #c8141b); color: var(--sobre-vermelho, #fff); font-family: var(--font-geist-sans), system-ui, sans-serif; font-weight: 500; text-decoration: none; transition: background-color 150ms; } .ds-botao:hover { background: color-mix(in srgb, var(--vermelho-fundo, #c8141b) 82%, black); } .ds-botao:focus-visible { outline: 3px solid var(--vermelho, #c8141b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Link secundário",
+      "kind": "button",
+      "refersTo": "link-secundario",
+      "description": "GitHub, LinkedIn, Currículo e o resumo do <details>: tinta com sublinhado que fica vermelho no hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">GitHub <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-geist-sans), system-ui, sans-serif; font-weight: 500; color: var(--ink, #141414); text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--line, #d2d4d8); text-underline-offset: 6px; transition: text-decoration-color 150ms; } .ds-link:hover { text-decoration-color: var(--vermelho, #c8141b); } .ds-link:focus-visible { outline: 3px solid var(--vermelho, #c8141b); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Quadro com legenda",
+      "kind": "card",
+      "refersTo": "quadro",
+      "description": "Quadro de HQ com contorno de tinta e a caixa de legenda presa no canto.",
+      "html": "<div class=\"ds-quadro\"><h3 class=\"ds-titulo-hq\">Projetos</h3><p class=\"ds-texto\">Problemas que eu vi de perto e resolvi com código.</p><p class=\"ds-legenda\">Enquanto isso, em Presidente Prudente…</p></div>",
+      "css": ".ds-quadro { position: relative; border: 3px solid var(--borda, #141414); border-radius: 2px; background: var(--surface, #fff); padding: 40px 32px 56px; } .ds-titulo-hq { margin: 0; font-family: var(--font-anton), 'Arial Narrow', sans-serif; font-weight: 400; font-size: 3rem; line-height: 0.95; letter-spacing: 0.005em; text-transform: uppercase; color: var(--ink, #141414); text-shadow: -0.04em 0 0 var(--ciano, #00a6dd), 0.04em 0.02em 0 var(--magenta, #e4007c); } .ds-texto { margin: 16px 0 0; font-family: var(--font-geist-sans), system-ui, sans-serif; font-size: 1.125rem; line-height: 1.6; color: var(--body, #36373b); } .ds-legenda { position: absolute; bottom: 0; left: 0; margin: 0; display: inline-block; background: var(--amarelo, #ffd60a); color: var(--sobre-amarelo, #141414); border: 2px solid var(--sobre-amarelo, #141414); border-bottom: 0; border-left: 0; padding: 0.3rem 0.7rem 0.25rem; font-family: var(--font-marker), cursive; font-size: 0.95rem; line-height: 1.25; text-transform: uppercase; letter-spacing: 0.02em; }"
+    },
+    {
+      "name": "Tag de stack",
+      "kind": "chip",
+      "refersTo": "tag-stack",
+      "description": "Tecnologia em Geist Mono com contorno de tinta.",
+      "html": "<ul class=\"ds-tags\"><li class=\"ds-tag\">TypeScript</li><li class=\"ds-tag\">Next.js</li><li class=\"ds-tag\">Vitest</li></ul>",
+      "css": ".ds-tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; } .ds-tag { border: 2px solid var(--borda, #141414); border-radius: 3px; background: var(--surface, #fff); padding: 4px 10px; font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 13px; color: var(--ink, #141414); }"
+    },
+    {
+      "name": "Tag da próxima versão",
+      "kind": "chip",
+      "refersTo": "tag-versao-futura",
+      "description": "Versão futura no changelog: mono vermelho com contorno tracejado.",
+      "html": "<span class=\"ds-versao\">v4.0.0</span>",
+      "css": ".ds-versao { display: inline-block; border: 2px dashed var(--vermelho, #c8141b); border-radius: 3px; padding: 0 6px; font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 1rem; font-weight: 500; color: var(--vermelho, #c8141b); }"
+    },
+    {
+      "name": "Cabeçalho",
+      "kind": "nav",
+      "refersTo": "cabecalho",
+      "description": "Barra fixa com nome em Anton, menu apagado com sublinhado vermelho no hover e linha de tinta embaixo.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-nome\" href=\"#\">Lucas Sant'Anna</a><nav><a class=\"ds-nav-link\" href=\"#\">Projetos</a><a class=\"ds-nav-link\" href=\"#\">Trajetória</a><a class=\"ds-nav-link\" href=\"#\">Contato</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 40px; background: var(--canvas, #eeeff0); border-bottom: 3px solid var(--borda, #141414); } .ds-nav-nome { font-family: var(--font-anton), 'Arial Narrow', sans-serif; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.01em; color: var(--ink, #141414); text-decoration: none; } .ds-nav nav { display: flex; gap: 28px; } .ds-nav-link { font-family: var(--font-geist-sans), system-ui, sans-serif; font-size: 15px; font-weight: 500; color: var(--muted, #595b61); text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: transparent; text-underline-offset: 6px; transition: color 150ms, text-decoration-color 150ms; } .ds-nav-link:hover { color: var(--ink, #141414); text-decoration-color: var(--vermelho, #c8141b); } .ds-nav-link:focus-visible { outline: 3px solid var(--vermelho, #c8141b); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Seletor de tema",
+      "kind": "custom",
+      "refersTo": "seletor-tema-ativo",
+      "description": "Pílula de três opções (automático, claro, escuro); a ativa fica em tinta chapada.",
+      "html": "<div class=\"ds-tema\" role=\"radiogroup\" aria-label=\"Aparência\"><button class=\"ds-tema-op\" aria-checked=\"true\" role=\"radio\" aria-label=\"Automático\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" aria-hidden=\"true\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M8 21h8M12 17v4\"/></svg></button><button class=\"ds-tema-op\" aria-checked=\"false\" role=\"radio\" aria-label=\"Claro\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg></button><button class=\"ds-tema-op\" aria-checked=\"false\" role=\"radio\" aria-label=\"Escuro\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" aria-hidden=\"true\"><path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\"/></svg></button></div>",
+      "css": ".ds-tema { display: inline-flex; align-items: center; border: 2px solid var(--borda, #141414); border-radius: 9999px; padding: 2px; } .ds-tema-op { display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 9999px; background: transparent; color: var(--muted, #595b61); cursor: pointer; transition: color 150ms, background-color 150ms; } .ds-tema-op:hover { color: var(--ink, #141414); } .ds-tema-op[aria-checked=\"true\"] { background: var(--ink, #141414); color: var(--canvas, #eeeff0); } .ds-tema-op:focus-visible { outline: 3px solid var(--vermelho, #c8141b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Etapa do fluxo",
+      "kind": "custom",
+      "refersTo": "fluxo-etapa",
+      "description": "Assinatura do carro-chefe: etapa numerada em legenda amarela, ligada à próxima por seta vermelha.",
+      "html": "<ol class=\"ds-fluxo\"><li class=\"ds-etapa\"><span class=\"ds-etapa-n\">1</span><p class=\"ds-etapa-t\">Dados abertos da ANEEL</p><p class=\"ds-etapa-d\">Tarifas, bandeiras e distribuidoras por cidade.</p><span class=\"ds-seta\" aria-hidden=\"true\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></span></li><li class=\"ds-etapa\"><span class=\"ds-etapa-n\">2</span><p class=\"ds-etapa-t\">GitHub Action diária</p><p class=\"ds-etapa-d\">Baixa os dados e gera arquivos estáticos.</p></li></ol>",
+      "css": ".ds-fluxo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; list-style: none; margin: 0; padding: 0; } .ds-etapa { position: relative; border: 3px solid var(--borda, #141414); border-radius: 2px; background: var(--surface, #fff); padding: 36px 16px 20px; } .ds-etapa-n { position: absolute; top: 0; left: 0; background: var(--amarelo, #ffd60a); color: var(--sobre-amarelo, #141414); border: 2px solid var(--sobre-amarelo, #141414); border-top: 0; border-left: 0; padding: 2px 10px; font-family: var(--font-marker), cursive; font-size: 0.875rem; } .ds-etapa-t { margin: 0; font-family: var(--font-geist-sans), system-ui, sans-serif; font-weight: 600; line-height: 1.375; color: var(--ink, #141414); } .ds-etapa-d { margin: 6px 0 0; font-family: var(--font-geist-sans), system-ui, sans-serif; font-size: 15px; line-height: 1.375; color: var(--body, #36373b); } .ds-seta { position: absolute; top: 50%; right: -24px; transform: translateY(-50%); color: var(--vermelho, #c8141b); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A HQ de rua",
+    "overview": "A página é lida como um gibi impresso num papel cinza-claro: quadros brancos com contorno de tinta grosso, títulos de capa em caixa alta condensada com as chapas de ciano e magenta levemente fora de registro, caixas de legenda amarelas de narrador e retícula de pontos (Ben-Day) preenchendo o espaço vazio. A intensidade é \"equilibrada\": o clima de HQ é forte no topo, nos títulos, nas legendas, na retícula e no quadro vermelho de fechamento; o texto corrido fica limpo, em Geist, sobre fundo liso, para o recrutador ler sem esforço.\n\nA densidade é editorial, com respiro generoso entre seções e linhas de tinta de 3px separando itens de lista (Stack, Trajetória, Outros projetos) em vez de cards. Só existem quadros onde a HQ pede um quadro: os dois quadros irmãos do topo, o carro-chefe e o fechamento.\n\nA linguagem é genérica de quadrinhos. Nada de personagem, símbolo de aranha, logo ou imagem da Marvel ou da Sony.",
+    "keyCharacteristics": [
+      "Papel cinza-claro, quadros brancos, contorno de tinta de 3px, sem sombras.",
+      "Vermelho como a única cor de ação; amarelo só nas legendas; ciano e magenta só no desalinhamento dos títulos.",
+      "Anton em caixa alta nos títulos, Permanent Marker só nas legendas, Geist no texto, Geist Mono nos dados.",
+      "Retícula Ben-Day como textura de preenchimento, nunca atrás de texto corrido.",
+      "Um único momento de movimento: o nome do topo \"entra em registro\".",
+      "Claro e escuro com a mesma gramática; no escuro o contorno vira tinta clara."
+    ],
+    "rules": [
+      { "name": "The Uma Tinta de Ação Rule", "body": "Tudo que se clica ou que confirma algo é vermelho. Nenhuma outra cor sinaliza interação.", "section": "colors" },
+      { "name": "The Chapa Fora de Registro Rule", "body": "Ciano e magenta só aparecem como o deslocamento do `titulo-hq`. Se a cor está num pixel que não é sombra de título, está errada.", "section": "colors" },
+      { "name": "The Amarelo é Narrador Rule", "body": "O amarelo fala como narrador: caixas de legenda e números das etapas. Fora disso, só pinta a seleção de texto; não vira destaque de botão nem fundo de seção.", "section": "colors" },
+      { "name": "The Capa e Miolo Rule", "body": "Anton só em títulos, nunca em parágrafo; Geist nunca em título de capa.", "section": "typography" },
+      { "name": "The Registro Só Grande Rule", "body": "O desalinhamento ciano/magenta vale para o nome do topo, títulos de seção e o nome do carro-chefe. Títulos menores usam Anton limpo, sem chapas.", "section": "typography" },
+      { "name": "The Calha de Gibi Rule", "body": "Quadros irmãos ficam lado a lado separados por calha de papel, nunca colados nem sobrepostos.", "section": "layout" },
+      { "name": "The Papel Chapado Rule", "body": "Nada flutua. Se precisa separar, use contorno de tinta, fio ou calha.", "section": "elevation" },
+      { "name": "The Retícula Muda Rule", "body": "A retícula preenche área vazia (o rodapé do quadro \"Agora\", o canto do quadro de contato) e nunca fica atrás de texto corrido.", "section": "elevation" },
+      { "name": "The Sem Quadro no Quadro Rule", "body": "Quadro não vai dentro de quadro. A única exceção é a tira \"Como o dado anda\" dentro do carro-chefe, que é a assinatura da página. Capturas dentro de quadros usam contorno simples de 2px.", "section": "shapes" }
+    ],
+    "dos": [
+      "**Do** usar o vermelho em tudo que é clicável ou confirma algo, e o contorno de foco vermelho de 3px.",
+      "**Do** separar itens de lista com linha de tinta de 3px e pares de definição com fio de 1px.",
+      "**Do** prender a caixa de legenda no canto do quadro, como narrador.",
+      "**Do** manter o texto corrido em Geist sobre fundo liso, com contraste AA nos dois temas.",
+      "**Do** esconder o que ainda não existe (foto, capturas, estante, links no ar) em vez de mostrar \"em breve\"."
+    ],
+    "donts": [
+      "**Don't** usar nada da Marvel ou da Sony: nome de personagem, símbolo de aranha, logo ou imagem dos filmes.",
+      "**Don't** usar sombra de elevação; o único `text-shadow` é o desalinhamento das chapas.",
+      "**Don't** usar ciano ou magenta fora do desalinhamento dos títulos, nem amarelo fora das legendas (e da seleção de texto).",
+      "**Don't** colocar retícula atrás de texto corrido.",
+      "**Don't** colocar quadro dentro de quadro, fora a tira do fluxo do carro-chefe.",
+      "**Don't** usar roxo/índigo, emoji como ícone, fundo bege ou gradiente decorativo.",
+      "**Don't** colocar rótulo acima do título nem numerar seções (01/02).",
+      "**Don't** animar elementos ao rolar."
+    ]
+  }
+}

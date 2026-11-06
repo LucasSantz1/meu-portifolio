@@ -40,7 +40,7 @@ export function SeletorTema() {
   }
 
   return (
-    <div role="radiogroup" aria-label="Aparência" className="flex items-center rounded-full border border-line p-0.5">
+    <div role="radiogroup" aria-label="Aparência" className="flex items-center rounded-full border-2 border-borda p-0.5">
       {opcoes.map(({ valor, rotulo, Icone }) => {
         const ativo = tema === valor;
         return (
@@ -52,8 +52,8 @@ export function SeletorTema() {
             aria-label={rotulo}
             title={rotulo}
             onClick={() => escolher(valor)}
-            className={`grid size-7 place-items-center rounded-full transition-colors ${
-              ativo ? "bg-hairline text-ink" : "text-muted hover:text-ink"
+            className={`grid size-8 place-items-center rounded-full transition-colors ${
+              ativo ? "bg-ink text-canvas" : "text-muted hover:text-ink"
             }`}
           >
             <Icone aria-hidden size={14} strokeWidth={1.75} />

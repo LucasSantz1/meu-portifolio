@@ -16,13 +16,13 @@ export default function Inicio() {
         Pular para os projetos
       </a>
       <Cabecalho />
-      <div className="moldura mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-[1240px]">
         <main>
           <Hero />
-          <Stack />
           <Projetos />
-          <Sobre />
+          <Stack />
           <Trajetoria />
+          <Sobre />
           <Formacao />
           <Contato />
         </main>

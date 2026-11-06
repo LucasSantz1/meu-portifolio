@@ -17,6 +17,9 @@ export type Projeto = {
   repositorio?: string;
   imagem?: string;
   legendaImagem: string;
+  // Projeto carro-chefe: aparece grande, com o fluxo da arquitetura em quadrinhos.
+  destaque?: boolean;
+  fluxo?: { titulo: string; detalhe: string }[];
 };
 
 export const projetos: Projeto[] = [
@@ -44,6 +47,14 @@ export const projetos: Projeto[] = [
     stack: ["TypeScript", "Next.js", "React", "Tailwind CSS", "Zustand", "Vitest", "Playwright", "GitHub Actions", "pnpm"],
     repositorio: "https://github.com/LucasSantz1/eficiencia-energetica",
     legendaImagem: "Captura da tela de resultado no celular",
+    destaque: true,
+    fluxo: [
+      { titulo: "Dados abertos da ANEEL", detalhe: "Tarifas, bandeiras e distribuidoras por cidade." },
+      { titulo: "GitHub Action diária", detalhe: "Baixa os dados todo dia e gera arquivos estáticos." },
+      { titulo: "Regras em TypeScript", detalhe: "packages/core: cálculos puros, testados com Vitest." },
+      { titulo: "Site Next.js (PWA)", detalhe: "Camadas conferidas no CI, rápido mesmo em internet lenta." },
+      { titulo: "A conta da família", detalhe: "Consumo por aparelho com a tarifa real e a economia em reais." },
+    ],
   },
   {
     slug: "monitor-atendimentos",

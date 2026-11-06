@@ -1,35 +1,22 @@
-// Moldura padrão de cada seção: linha de cima, cruzinhas nos cantos e o cabeçalho com número.
+// Moldura padrão de cada seção: título de capa de gibi e, se tiver, uma descrição curta.
 
 type Props = {
   id: string;
-  numero: string;
-  rotulo: string;
   titulo: string;
   descricao?: string;
   children: React.ReactNode;
 };
 
-export function Secao({ id, numero, rotulo, titulo, descricao, children }: Props) {
+export function Secao({ id, titulo, descricao, children }: Props) {
   return (
-    <section id={id} aria-labelledby={`${id}-titulo`} className="relative scroll-mt-28 md:scroll-mt-16 border-t border-hairline">
-      <span aria-hidden className="cruz -top-[6px] -left-[6px]" />
-      <span aria-hidden className="cruz -top-[6px] -right-[6px]" />
-      <div className="px-6 pt-20 pb-24 md:px-12 md:pt-24 md:pb-28">
-        <header className="mb-12 grid gap-4 md:mb-16 md:grid-cols-12 md:gap-8">
-          <p className="rotulo pt-2 text-muted md:col-span-3">
-            <span className="text-ink">{numero}</span>
-            <span className="mx-2 text-faint">/</span>
-            {rotulo}
-          </p>
-          <div className="md:col-span-9">
-            <h2 id={`${id}-titulo`} className="titulo-secao text-[1.875rem] md:text-[2.5rem]">
-              {titulo}
-            </h2>
-            {descricao && <p className="mt-4 max-w-[60ch] text-lg">{descricao}</p>}
-          </div>
-        </header>
-        {children}
-      </div>
+    <section id={id} aria-labelledby={`${id}-titulo`} className="scroll-mt-28 px-5 pt-16 pb-6 md:scroll-mt-20 md:px-10 md:pt-20 md:pb-8">
+      <header className="mb-8 max-w-[60ch] md:mb-10">
+        <h2 id={`${id}-titulo`} className="titulo-hq text-[2.75rem] md:text-[4rem]">
+          {titulo}
+        </h2>
+        {descricao && <p className="mt-4 text-lg">{descricao}</p>}
+      </header>
+      {children}
     </section>
   );
 }

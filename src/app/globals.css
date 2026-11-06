@@ -1,98 +1,93 @@
 @import "tailwindcss";
 
 /*
- * Identidade visual
- * - Base: sistema monocromático no estilo Geist (Vercel): papel claro, tinta quase preta,
- *   linhas finas no lugar de sombras, raio pequeno e fonte mono só para metadados.
- * - Destaque: o verde-energia do meu projeto de Eficiência Energética. Ele aparece só em
- *   links, no ponto de status e nas confirmações (✓), nunca como fundo de seção.
- * - Moldura de "planta técnica": linhas verticais nas bordas do conteúdo e cruzinhas (+)
- *   onde as seções começam.
+ * Identidade visual: HQ de rua, no clima do Aranhaverso, sem nenhum personagem ou marca.
+ * - Papel de impressão cinza-claro no claro e noite no escuro; tinta preta grossa nos quadros.
+ * - Vermelho é a cor de ação (links, botões, o traço do fluxo). Amarelo só nas caixas de legenda.
+ * - Ciano e magenta só no "desalinhamento de impressão" dos títulos.
+ * - Retícula de pontos (Ben-Day) como textura, nunca atrás de texto corrido.
  */
 
 :root {
-  --canvas: #fafafa;
+  --canvas: #eeeff0;
   --surface: #ffffff;
-  --ink: #171717;
-  --body: #4d4d4d;
-  --muted: #666666;
-  --faint: #8f8f8f;
-  --hairline: #ebebeb;
-  --line: #dedede;
-  --accent: #0a7356;
-  --accent-soft: #dcefe6;
-  --contrast: #171717;
-  --on-contrast: #fafafa;
-  --on-contrast-muted: #a1a1a1;
-  --on-contrast-line: #333333;
+  --ink: #141414;
+  --body: #36373b;
+  --muted: #595b61;
+  --line: #d2d4d8;
+  --borda: #141414;
+  --vermelho: #c8141b;
+  --vermelho-fundo: #c8141b;
+  --sobre-vermelho: #ffffff;
+  --amarelo: #ffd60a;
+  --sobre-amarelo: #141414;
+  --ciano: #00a6dd;
+  --magenta: #e4007c;
+  --ponto: rgb(20 20 20 / 0.3);
   color-scheme: light;
 }
 
-/* Modo escuro: segue o sistema, a não ser que a pessoa escolha "claro" no seletor. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-tema="claro"]) {
-    --canvas: #0a0a0a;
-    --surface: #111111;
-    --ink: #ededed;
-    --body: #a1a1a1;
-    --muted: #8f8f8f;
-    --faint: #707070;
-    --hairline: #1f1f1f;
-    --line: #2e2e2e;
-    --accent: #3dbb8c;
-    --accent-soft: #10291f;
-    --contrast: #ededed;
-    --on-contrast: #0a0a0a;
-    --on-contrast-muted: #4d4d4d;
-    --on-contrast-line: #d4d4d4;
+    --canvas: #0e0e12;
+    --surface: #17171d;
+    --ink: #f3efe6;
+    --body: #cdc7bc;
+    --muted: #a19b90;
+    --line: #2e2e36;
+    --borda: #f3efe6;
+    --vermelho: #ff5a4f;
+    --vermelho-fundo: #b5121a;
+    --ciano: #00b9f2;
+    --magenta: #ff2e98;
+    --ponto: rgb(255 255 255 / 0.18);
     color-scheme: dark;
   }
 }
 :root[data-tema="escuro"] {
-  --canvas: #0a0a0a;
-  --surface: #111111;
-  --ink: #ededed;
-  --body: #a1a1a1;
-  --muted: #8f8f8f;
-  --faint: #707070;
-  --hairline: #1f1f1f;
-  --line: #2e2e2e;
-  --accent: #3dbb8c;
-  --accent-soft: #10291f;
-  --contrast: #ededed;
-  --on-contrast: #0a0a0a;
-  --on-contrast-muted: #4d4d4d;
-  --on-contrast-line: #d4d4d4;
+  --canvas: #0e0e12;
+  --surface: #17171d;
+  --ink: #f3efe6;
+  --body: #cdc7bc;
+  --muted: #a19b90;
+  --line: #2e2e36;
+  --borda: #f3efe6;
+  --vermelho: #ff5a4f;
+  --vermelho-fundo: #b5121a;
+  --ciano: #00b9f2;
+  --magenta: #ff2e98;
+  --ponto: rgb(255 255 255 / 0.18);
   color-scheme: dark;
 }
 
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-hq: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-letreiro: var(--font-marker), cursive;
 
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-body: var(--body);
   --color-muted: var(--muted);
-  --color-faint: var(--faint);
-  --color-hairline: var(--hairline);
   --color-line: var(--line);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-contrast: var(--contrast);
-  --color-on-contrast: var(--on-contrast);
-  --color-on-contrast-muted: var(--on-contrast-muted);
-  --color-on-contrast-line: var(--on-contrast-line);
+  --color-borda: var(--borda);
+  --color-vermelho: var(--vermelho);
+  --color-vermelho-fundo: var(--vermelho-fundo);
+  --color-sobre-vermelho: var(--sobre-vermelho);
+  --color-amarelo: var(--amarelo);
+  --color-sobre-amarelo: var(--sobre-amarelo);
 
-  --radius-sm: 4px;
-  --radius-md: 6px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
 }
 
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
     background: var(--canvas);
+    scrollbar-color: var(--ink) var(--canvas);
   }
   body {
     background: var(--canvas);
@@ -105,21 +100,27 @@
   }
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     color: var(--ink);
     text-wrap: balance;
   }
-  p {
+  p,
+  dd,
+  li {
     text-wrap: pretty;
   }
   ::selection {
-    background: var(--accent-soft);
-    color: var(--ink);
+    background: var(--amarelo);
+    color: var(--sobre-amarelo);
   }
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 3px solid var(--vermelho);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 2px;
+  }
+  summary::-webkit-details-marker {
+    display: none;
   }
   @media (prefers-reduced-motion: no-preference) {
     html {
@@ -128,47 +129,76 @@
   }
 }
 
-/* Etiqueta em mono: metadados, rótulos e números de seção. */
+/* Título de capa de gibi: caixa alta condensada com as chapas de cor desalinhadas. */
+@utility titulo-hq {
+  font-family: var(--font-hq);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  text-shadow:
+    -0.04em 0 0 var(--ciano),
+    0.04em 0.02em 0 var(--magenta);
+}
+@utility titulo-hq-leve {
+  font-family: var(--font-hq);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+/* Caixa de legenda amarela, como o narrador dos quadrinhos. */
+@utility legenda {
+  display: inline-block;
+  background: var(--amarelo);
+  color: var(--sobre-amarelo);
+  border: 2px solid var(--sobre-amarelo);
+  padding: 0.3rem 0.7rem 0.25rem;
+  font-family: var(--font-letreiro);
+  font-size: 0.95rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Quadro de HQ: contorno de tinta grosso, sem sombra. */
+@utility quadro {
+  border: 3px solid var(--borda);
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+/* Retícula de pontos (Ben-Day). Sempre em área sem texto corrido. */
+@utility reticula {
+  background-image: radial-gradient(var(--ponto) 1.9px, transparent 2.1px);
+  background-size: 8px 8px;
+}
+
+/* Metadados: datas, versões e tags. */
 @utility rotulo {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.5;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-/* Títulos grandes: peso médio e espaçamento apertado, como no Geist. */
-@utility titulo-display {
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 1;
+/* O título "entra em registro" quadro a quadro, como impressão acertando as chapas. */
+@keyframes registro {
+  0% {
+    text-shadow:
+      -0.14em 0 0 var(--ciano),
+      0.14em 0.06em 0 var(--magenta);
+  }
+  100% {
+    text-shadow:
+      -0.04em 0 0 var(--ciano),
+      0.04em 0.02em 0 var(--magenta);
+  }
 }
-@utility titulo-secao {
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-}
-
-/* Moldura de planta técnica: linhas verticais nas laterais do conteúdo. */
-@utility moldura {
-  border-inline: 1px solid var(--hairline);
-}
-
-/* Cruzinha (+) no canto onde a seção encontra a moldura. */
-@utility cruz {
-  position: absolute;
-  width: 11px;
-  height: 11px;
-  background:
-    linear-gradient(var(--faint), var(--faint)) center / 1px 100% no-repeat,
-    linear-gradient(var(--faint), var(--faint)) center / 100% 1px no-repeat;
-}
-
-/* Grade bem sutil só no topo da página. */
-@utility grade-fundo {
-  background-image:
-    linear-gradient(to right, var(--hairline) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--hairline) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black, transparent 85%);
+@media (prefers-reduced-motion: no-preference) {
+  .entra-registro {
+    animation: registro 480ms steps(4, end) both;
+  }
 }

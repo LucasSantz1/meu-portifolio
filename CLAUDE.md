@@ -14,28 +14,31 @@ Mostrar que eu domino front-end e back-end (regras de negócio, banco de dados e
 
 ## Seções (nesta ordem)
 
-1. **Topo (Hero):** nome, cargo, uma frase de apresentação e botões para GitHub, LinkedIn e Currículo (PDF). Embaixo, uma faixa com disponibilidade, cidade, hora local e idiomas.
-2. **01 Stack:** quatro colunas de ponta a ponta: Interface → Back-end e APIs → Dados → Qualidade e entrega.
-3. **02 Projetos:** metadados fixos à esquerda (tipo, status, período, links) e, à direita, a captura e o estudo de caso (Problema, Solução, Arquitetura, Decisões, Stack).
-4. **03 Sobre mim:** texto descontraído, os hobbies ("Fora do código": futebol, família e namorada, fé, leitura) e a "Estante" com os livros que já li.
-5. **04 Trajetória:** em formato de CHANGELOG, com cada emprego como uma versão. A v4.0.0 é a "próxima versão" (Desenvolvedor Full-Stack).
-6. **05 Formação:** formação, cursos e certificações, idiomas.
-7. **06 Contato:** faixa invertida com o e-mail em destaque e os links.
+1. **Topo (Hero):** dois quadros de HQ lado a lado.
+   - **Esquerda:** nome, cargo, chamada, o botão "Ver projetos" e os links de GitHub, LinkedIn e Currículo, com a legenda "Enquanto isso, em Presidente Prudente, SP…".
+   - **Direita:** a faixa **"Agora"** (construindo / lendo / torcendo / status / hora local), com a foto em cima quando existir.
+2. **Projetos:** o carro-chefe (`destaque: true`) aparece grande, com o fluxo "Como o dado anda" em quadrinhos numerados, Problema, Solução, Decisões e Stack. Os outros entram em linhas compactas, com o estudo de caso recolhido em "Ler estudo de caso".
+3. **Ferramentas (stack):** uma tabela curta por camada (Interface → Back-end e APIs → Dados → Qualidade e entrega).
+4. **Changelog da carreira:** cada emprego é uma versão. A v4.0.0 é a "próxima versão" (Desenvolvedor Full-Stack).
+5. **Sobre mim:** o texto, o "Fora do código" (futebol, família e namorada, fé, leitura) e a **Estante**, que só aparece quando `livros` tem itens.
+6. **Formação:** graduação, cursos e certificações, idiomas.
+7. **Contato:** o último quadro, vermelho com retícula, com o e-mail em destaque e os links.
 
 ## Organização do código
 
 ```
 src/
   app/
-    layout.tsx        fontes Geist, metadados e o script que aplica o tema salvo antes de pintar
+    layout.tsx        fontes (Geist, Anton, Permanent Marker), metadados e o script que aplica o tema salvo antes de pintar
     page.tsx          monta as seções na ordem
-    globals.css       tokens de cor (claro e escuro), utilitários (rotulo, titulo-display, moldura, cruz, grade-fundo)
+    globals.css       tokens de cor (claro e escuro), utilitários (titulo-hq, titulo-hq-leve, legenda, quadro, reticula, rotulo)
   conteudo/           TODO o texto do site, separado do layout
-    perfil.ts         nome, cargo, chamada, e-mail, links, foto, idiomas, texto "Sobre mim" e hobbies
-    projetos.ts       lista de projetos (tipo Projeto)
+    perfil.ts         nome, cargo, chamada, e-mail, links, foto, idiomas, faixa "Agora", texto "Sobre mim" e hobbies
+    pagina.ts         títulos, legendas e chamadas de cada seção
+    projetos.ts       lista de projetos (tipo Projeto; `destaque` e `fluxo` no carro-chefe)
     carreira.ts       stack de ponta a ponta, trajetória, formação, certificações e livros
   componentes/        uma seção por arquivo (Hero, Stack, Projetos, Sobre, Trajetoria, Contato...)
-    Secao.tsx         moldura padrão das seções: linha de cima, cruzinhas e cabeçalho "NN / rótulo"
+    Secao.tsx         moldura padrão das seções: título de capa de gibi e descrição
     SeletorTema.tsx   automático / claro / escuro (client component, salva no localStorage)
     Relogio.tsx       hora de Presidente Prudente (client component)
 public/
@@ -48,24 +51,34 @@ public/
 
 ## Design (manter)
 
-A base é o sistema de design da Vercel (Geist), com detalhes próprios. Não "suavizar" para um visual genérico.
+HQ de rua no clima do *Aranhaverso*, na intensidade "equilibrado": base limpa e legível para o recrutador, com o clima de HQ forte no topo, nos títulos, nas legendas, na retícula e no fechamento. A estrutura é "projeto em destaque". O detalhe completo está em `DESIGN.md`, e o contrato da página em `.impeccable/surfaces/`.
 
-- **Fundo claro de papel** (`#fafafa`), tinta quase preta (`#171717`), texto `#4d4d4d`, linhas finas (`#ebebeb` / `#dedede`). O modo escuro segue o sistema ou o seletor.
-- **Uma única cor de destaque:** o verde-energia do meu projeto de Eficiência Energética (`#0a7356` no claro, `#3dbb8c` no escuro). Ele aparece **só** em links, no ponto de status, nos ✓ das decisões e na tag da próxima versão. Nunca como fundo de seção ou decoração.
-- **Tipografia:** Geist Sans para tudo, com títulos em peso 500 e espaçamento apertado. Geist Mono **só** em rótulos e metadados (utilitário `rotulo`: 12px, maiúsculas, espaçado), versões e tags de stack.
-- **Forma:** raio de 6px (4px nas tags), sem sombras. A separação é feita com linhas finas e espaço.
-- **Moldura de planta técnica:** linhas verticais nas laterais do conteúdo e cruzinhas (+) onde cada seção começa. A grade de fundo aparece só no topo, bem sutil.
-- **Faixa invertida** só no Contato, como fechamento.
-- **Evitar:** roxo/índigo, emoji como ícone, cards em tudo, faixa colorida na lateral de card, gradientes, animações de pulsar ou de aparecer ao rolar, palavra destacada em outra fonte ou cor dentro do título.
-- **Acessibilidade:** contraste AA nos dois temas, foco visível em verde, link "Pular para os projetos", respeitar `prefers-reduced-motion`.
-
-Referências usadas: Vercel/Geist (base), Linear (capturas em moldura fina), Raycast e os portfólios anoopsonkriya.dev e abhishek-kumar-t.vercel.app (carreira como changelog). As referências servem de inspiração. O site precisa continuar único e com a minha cara.
+- **Nada da Marvel ou da Sony:** nada de nome de personagem, símbolo de aranha, logo ou imagem dos filmes. Só a linguagem visual genérica de quadrinhos.
+- **Cores:**
+  - Fundo: papel cinza-claro `#eeeff0`, com quadros brancos e contorno de tinta `#141414` de 3px. No escuro: `#0e0e12`, com o contorno claro.
+  - **Vermelho `#c8141b`** (`#ff5a4f` no escuro) é a cor de ação: links, botão principal, ✓, setas do fluxo e tag da próxima versão.
+  - **Amarelo `#ffd60a`** só nas caixas de legenda.
+  - **Ciano e magenta** só no desalinhamento de impressão dos títulos (`titulo-hq`).
+- **Retícula (Ben-Day):** só como textura, nunca atrás de texto corrido.
+- **Tipografia:**
+  - Anton (caixa alta condensada) nos títulos.
+  - Permanent Marker só nas legendas.
+  - Geist Sans no texto.
+  - Geist Mono só em dados (datas, versões, tags de stack, rótulos).
+- **Forma:** quadros com contorno grosso, raio de 2 a 4px, sem sombras, e nada de quadro dentro de quadro. A única exceção é a tira do fluxo "Como o dado anda" dentro do carro-chefe, que é a assinatura da página.
+- **Movimento:** transições só de cor. Há um único momento, o nome do topo que "entra em registro" (`steps(4)`). Nada aparece ao rolar, e `prefers-reduced-motion` é respeitado.
+- **Evitar:**
+  - roxo/índigo, emoji como ícone, fundo bege, gradientes decorativos;
+  - rótulo acima do título, numeração de seção (01/02);
+  - "em breve" à mostra: o que não existe não aparece.
+- **Acessibilidade:** contraste AA nos dois temas, foco visível em vermelho, link "Pular para os projetos".
 
 ## Pendências
 
-- **Foto:** colocar em `public/` e preencher `foto` em `perfil.ts`. Hoje aparece um espaço com "LS".
-- **Livros da estante:** preencher `livros` em `carreira.ts`. Hoje aparece um aviso no lugar.
-- **Capturas dos projetos:** colocar em `public/projetos/` e preencher `imagem` em cada projeto. Hoje aparece "Captura em breve".
+- **Foto:** colocar em `public/` e preencher `foto` em `perfil.ts`. Ela aparece no quadro "Agora".
+- **Faixa "Agora":** preencher "Lendo" e "Torcendo" em `agora` (`perfil.ts`). Campo vazio não aparece.
+- **Livros da estante:** preencher `livros` em `carreira.ts`. Enquanto estiver vazio, a Estante não aparece.
+- **Capturas dos projetos:** colocar em `public/projetos/` e preencher `imagem` em cada projeto. Sem imagem, nada aparece.
 - **Projetos:** os três atuais (Eficiência Energética, Monitor de Atendimentos, Inspetor de E-mails) são um ponto de partida. Vou criar projetos novos para o portfólio. O Monitor está sem link de repositório (repositório privado) e o Inspetor ainda está sem a stack.
 - **Links no ar:** nenhum projeto tem link de produção ainda.
 - **Currículo:** o PDF atual é o export do LinkedIn com o resumo antigo. Trocar pela versão atualizada.

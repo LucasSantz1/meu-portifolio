@@ -3,26 +3,26 @@ import { SeletorTema } from "./SeletorTema";
 
 const menu = [
   { href: "#projetos", rotulo: "Projetos" },
-  { href: "#sobre", rotulo: "Sobre" },
   { href: "#trajetoria", rotulo: "Trajetória" },
+  { href: "#sobre", rotulo: "Sobre" },
   { href: "#contato", rotulo: "Contato" },
 ];
 
+const estiloLink =
+  "font-medium text-muted underline decoration-2 decoration-transparent underline-offset-[6px] transition-colors hover:text-ink hover:decoration-vermelho";
+
 export function Cabecalho() {
   return (
-    <header className="sticky top-0 z-30 border-b border-hairline bg-canvas/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 px-6 md:px-12">
-        <a href="#inicio" className="flex items-center gap-2.5 text-ink">
-          <span aria-hidden className="grid size-7 place-items-center rounded-md bg-ink font-mono text-[11px] font-medium text-canvas">
-            LS
-          </span>
-          <span className="text-[15px] font-medium tracking-tight">{perfil.nome}</span>
+    <header className="sticky top-0 z-30 border-b-[3px] border-borda bg-canvas">
+      <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-5 md:px-10">
+        <a href="#inicio" className="titulo-hq-leve text-xl text-ink">
+          {perfil.nome}
         </a>
         <nav aria-label="Seções" className="hidden md:block">
-          <ul className="flex items-center gap-7 text-sm">
+          <ul className="flex items-center gap-7 text-[15px]">
             {menu.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="text-muted transition-colors hover:text-ink">
+                <a href={item.href} className={estiloLink}>
                   {item.rotulo}
                 </a>
               </li>
@@ -32,11 +32,11 @@ export function Cabecalho() {
         <SeletorTema />
       </div>
       {/* No celular o menu vira uma segunda linha que dá pra deslizar. */}
-      <nav aria-label="Seções" className="border-t border-hairline md:hidden">
-        <ul className="flex gap-6 overflow-x-auto px-6 py-2.5 text-sm whitespace-nowrap">
+      <nav aria-label="Seções (celular)" className="border-t border-line md:hidden">
+        <ul className="flex gap-1 overflow-x-auto px-3 text-[15px] whitespace-nowrap">
           {menu.map((item) => (
             <li key={item.href}>
-              <a href={item.href} className="text-muted transition-colors hover:text-ink">
+              <a href={item.href} className={`${estiloLink} inline-block px-2 py-2.5`}>
                 {item.rotulo}
               </a>
             </li>

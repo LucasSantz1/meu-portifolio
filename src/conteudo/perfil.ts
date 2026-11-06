@@ -23,6 +23,13 @@ export const perfil = {
   ],
 };
 
+// Faixa "Agora" do topo. Campo vazio ("") não aparece no site.
+export const agora = [
+  { rotulo: "Construindo", valor: "Inspetor de E-mails" },
+  { rotulo: "Lendo", valor: "" },
+  { rotulo: "Torcendo", valor: "" },
+];
+
 export const sobre = {
   paragrafos: [
     "Sou o Lucas, tenho 23 anos e moro em Presidente Prudente, no interior de São Paulo. Me formei em Análise e Desenvolvimento de Sistemas pela Fatec e trabalho com tecnologia desde 2021.",
@@ -32,6 +39,6 @@ export const sobre = {
     { titulo: "Futebol", texto: "Jogar bola é o meu jeito de desligar a cabeça." },
     { titulo: "Família", texto: "O tempo com a minha família e com a minha namorada vem em primeiro lugar." },
     { titulo: "Fé", texto: "Sou católico e participo da vida da minha igreja." },
-    { titulo: "Leitura", texto: "Sempre tem um livro em andamento. Alguns que já li estão logo abaixo." },
+    { titulo: "Leitura", texto: "Sempre tem um livro em andamento." },
   ],
 };

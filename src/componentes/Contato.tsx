@@ -1,45 +1,43 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
+import { pagina } from "@/conteudo/pagina";
 import { perfil } from "@/conteudo/perfil";
 
-// Faixa invertida (fundo escuro no tema claro): o único bloco "pesado" da página, pra fechar com o contato.
+// Último quadro da página: vermelho com retícula, pra fechar a história com o contato.
 export function Contato() {
   const links = [
-    { rotulo: "LinkedIn", href: perfil.links.linkedin, externo: true },
-    { rotulo: "GitHub", href: perfil.links.github, externo: true },
-    { rotulo: "Currículo (PDF)", href: perfil.links.curriculo, externo: false },
+    { rotulo: "LinkedIn", href: perfil.links.linkedin, Icone: ArrowUpRight },
+    { rotulo: "GitHub", href: perfil.links.github, Icone: ArrowUpRight },
+    { rotulo: "Currículo (PDF)", href: perfil.links.curriculo, Icone: FileText },
   ];
 
   return (
-    <section id="contato" aria-labelledby="contato-titulo" className="relative scroll-mt-28 md:scroll-mt-16 bg-contrast text-on-contrast">
-      <div className="grid gap-12 px-6 py-24 md:grid-cols-12 md:gap-8 md:px-12 md:py-28">
-        <p className="rotulo text-on-contrast-muted md:col-span-3">
-          <span className="text-on-contrast">06</span>
-          <span className="mx-2">/</span>
-          Contato
-        </p>
-        <div className="md:col-span-9">
-          <h2 id="contato-titulo" className="titulo-secao text-[2.25rem] text-on-contrast md:text-[3.5rem]">
-            Vamos construir algo juntos.
+    <section id="contato" aria-labelledby="contato-titulo" className="scroll-mt-28 px-5 pt-16 pb-16 md:scroll-mt-20 md:px-10 md:pt-24">
+      <div className="relative overflow-hidden rounded-[2px] border-[3px] border-borda bg-vermelho-fundo px-6 pt-20 pb-14 text-sobre-vermelho md:px-12 md:pt-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block [background-image:radial-gradient(rgb(0_0_0/0.22)_1.6px,transparent_1.8px)] [background-size:10px_10px] [mask-image:linear-gradient(to_top_left,black,transparent_70%)]" />
+        <p className="legenda absolute top-0 left-0 border-t-0 border-l-0">{pagina.contato.legenda}</p>
+
+        <div className="relative max-w-[56rem]">
+          <h2 id="contato-titulo" className="titulo-hq-leve text-[3rem] text-sobre-vermelho md:text-[5rem]">
+            {pagina.contato.titulo}
           </h2>
-          <p className="mt-5 max-w-[48ch] text-lg text-on-contrast-muted">
-            Estou aberto a vagas de desenvolvedor full-stack ou back-end. A forma mais rápida de falar comigo é por e-mail.
-          </p>
+          <p className="mt-5 max-w-[48ch] text-lg">{pagina.contato.texto}</p>
           <a
             href={`mailto:${perfil.email}`}
-            className="mt-10 inline-block font-mono text-lg break-all text-on-contrast underline decoration-on-contrast-line underline-offset-8 transition-colors hover:decoration-on-contrast md:text-2xl"
+            className="mt-10 inline-block font-mono text-lg font-medium break-all underline decoration-2 underline-offset-8 md:text-2xl"
           >
             {perfil.email}
           </a>
-          <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-on-contrast-line pt-6 text-[15px]">
-            {links.map((l) => (
-              <li key={l.rotulo}>
+          <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t-2 border-sobre-vermelho/40 pt-6 text-[15px]">
+            {links.map(({ rotulo, href, Icone }) => (
+              <li key={rotulo}>
                 <a
-                  href={l.href}
-                  {...(l.externo ? { target: "_blank", rel: "noreferrer" } : { download: true })}
-                  className="inline-flex items-center gap-1 text-on-contrast-muted transition-colors hover:text-on-contrast"
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 font-medium underline decoration-transparent decoration-2 underline-offset-[5px] transition-colors hover:decoration-sobre-vermelho"
                 >
-                  {l.rotulo}
-                  <ArrowUpRight aria-hidden size={15} strokeWidth={1.75} />
+                  {rotulo}
+                  <Icone aria-hidden size={15} strokeWidth={2} />
                 </a>
               </li>
             ))}
@@ -52,10 +50,8 @@ export function Contato() {
 
 export function Rodape() {
   return (
-    <footer className="rotulo flex flex-wrap justify-between gap-3 border-t border-hairline px-6 py-6 text-muted md:px-12">
-      <span>
-        © {new Date().getFullYear()} {perfil.nome}
-      </span>
+    <footer className="rotulo flex flex-wrap justify-between gap-3 px-5 pb-8 text-muted md:px-10">
+      <span>{perfil.nome}</span>
       <span>Next.js · TypeScript · Tailwind CSS</span>
     </footer>
   );

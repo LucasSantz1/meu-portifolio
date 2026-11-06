@@ -1,41 +1,30 @@
 import { stackPontaAPonta } from "@/conteudo/carreira";
+import { pagina } from "@/conteudo/pagina";
 import { Secao } from "./Secao";
 
-// A stack como um caminho: da interface até a entrega, cada etapa numa coluna.
+// A stack como uma tabela curta: cada camada numa linha, da interface até a entrega.
 export function Stack() {
   return (
-    <Secao
-      id="stack"
-      numero="01"
-      rotulo="Stack"
-      titulo="De ponta a ponta, da tela ao deploy."
-      descricao="As ferramentas que uso em cada camada de uma aplicação. O back-end é onde me sinto mais em casa."
-    >
-      {/* gap-px com fundo de linha: as divisórias entre colunas saem sozinhas em qualquer largura. */}
-      <ol className="grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-        {stackPontaAPonta.map((camada, i) => (
-          <li key={camada.etapa} className="bg-surface p-6">
-            <p className="rotulo flex items-center justify-between text-muted">
-              <span className="text-ink">{String(i + 1).padStart(2, "0")}</span>
-              {i < stackPontaAPonta.length - 1 && (
-                <span aria-hidden className="hidden text-faint lg:inline">
-                  →
-                </span>
-              )}
-            </p>
-            <h3 className="mt-6 text-xl font-medium tracking-tight">{camada.etapa}</h3>
-            <p className="mt-1 text-sm text-muted">{camada.descricao}</p>
-            <ul className="mt-5 space-y-2 text-[15px]">
-              {camada.itens.map((item) => (
-                <li key={item} className="flex items-center gap-2.5">
-                  <span aria-hidden className="h-px w-3 bg-faint" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </li>
+    <Secao id="stack" titulo={pagina.stack.titulo} descricao={pagina.stack.descricao}>
+      <dl className="border-b-[3px] border-borda">
+        {stackPontaAPonta.map((camada) => (
+          <div key={camada.etapa} className="grid gap-3 border-t-[3px] border-borda py-6 md:grid-cols-12 md:gap-8">
+            <dt className="md:col-span-4">
+              <span className="titulo-hq-leve block text-2xl text-ink">{camada.etapa}</span>
+              <span className="mt-1 block text-[15px] text-muted">{camada.descricao}</span>
+            </dt>
+            <dd className="md:col-span-8 md:pt-1">
+              <ul className="flex flex-wrap gap-1.5">
+                {camada.itens.map((item) => (
+                  <li key={item} className="rounded-sm border-2 border-borda bg-surface px-2.5 py-1 font-mono text-[13px] text-ink">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
         ))}
-      </ol>
+      </dl>
     </Secao>
   );
 }
