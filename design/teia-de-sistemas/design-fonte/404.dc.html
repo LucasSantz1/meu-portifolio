@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Página não encontrada</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&amp;family=Archivo:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#12307A;font-family:'Archivo',system-ui,sans-serif}
+.nf{min-height:100vh;box-sizing:border-box;background:#12307A;color:#FFFFFF;position:relative;overflow:hidden;display:flex;align-items:center}
+.nf a:focus-visible{outline:3px solid #FFE24A;outline-offset:3px}
+.mono{font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace}
+.btn{transition:translate .12s ease-out,box-shadow .12s ease-out}
+.btn:hover{translate:-2px -2px;box-shadow:7px 7px 0 #000000 !important}
+.btn:active{translate:4px 4px;box-shadow:0 0 0 #000000 !important}
+.sway{transform-origin:330px 300px;animation:sway 3.4s ease-in-out infinite}
+@keyframes sway{0%,100%{rotate:-6deg}50%{rotate:6deg}}
+.big{animation:slam .7s cubic-bezier(.2,.9,.3,1.25) both}
+@keyframes slam{from{transform:scale(1.4) rotate(-6deg);opacity:0}60%{transform:scale(.97) rotate(1deg);opacity:1}to{transform:none;opacity:1}}
+@media (max-width: 900px){
+.cols{grid-template-columns:minmax(0,1fr) !important}
+.big{font-size:180px !important}
+.webart{max-width:360px}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+
+<main class="nf">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: radial-gradient(#8FB8FF 1.6px, transparent 1.8px); background-size: 12px 12px; opacity: .45; -webkit-mask-image: radial-gradient(circle at 0% 100%, #000000 0%, transparent 60%); mask-image: radial-gradient(circle at 0% 100%, #000000 0%, transparent 60%)"></div>
+<div class="cols" style="position: relative; width: 100%; max-width: 1280px; margin: 0 auto; padding: 48px 24px; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; align-self: flex-start; background: #FFE24A; color: #000000; border: 3px solid #000000; box-shadow: 4px 4px 0 #000000; padding: 8px 14px; font-weight: 700; font-size: 17px; rotate: -1.5deg">Ops…</p>
+<h1 class="big" style="margin: 0; font-family: 'Bangers', cursive; font-weight: 400; font-size: 260px; line-height: .8; letter-spacing: .02em; color: #FFFFFF; -webkit-text-stroke: 4px #000000; text-shadow: 10px 10px 0 #D7141E">404</h1>
+<p style="margin: 0; font-family: 'Bangers', cursive; font-size: 48px; letter-spacing: .02em; line-height: 1">Essa página escapou da teia.</p>
+<p class="mono" style="margin: 0; align-self: flex-start; background: #000000; border: 3px solid #FFFFFF; padding: 12px 16px; font-size: 14px; line-height: 1.7"><span style="color: #9C9C9C">$</span> curl /essa-pagina<br><span style="color: #FFE24A">404 Não encontrado</span></p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px">
+<a class="btn" href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 22px; background: #D7141E; color: #FFFFFF; border: 3px solid #000000; box-shadow: 5px 5px 0 #000000; font-family: 'Bangers', cursive; font-size: 24px; letter-spacing: .04em; text-decoration: none">Voltar ao início</a>
+<a class="btn" href="Main.dc.html#projetos" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 22px; background: #FFFFFF; color: #000000; border: 3px solid #000000; box-shadow: 5px 5px 0 #000000; font-family: 'Bangers', cursive; font-size: 24px; letter-spacing: .04em; text-decoration: none">Ver projetos</a>
+</div>
+</div>
+<svg class="webart" viewBox="0 0 600 600" role="img" aria-label="Teia rasgada, com um fio solto balançando" style="width: 100%; height: auto; overflow: visible">
+<g fill="none" stroke="#8FB8FF" stroke-linecap="round" stroke-linejoin="round">
+<path stroke-width="3" d="M300 300L352 15 M300 300L510 100 M300 300L587 261 M300 300L470 470 M300 300L248 585 M300 300L150 450 M300 300L13 339 M300 300L45 162 M300 300L174 39"></path>
+<path stroke-width="2" d="M310 246Q322 259 340 262Q341 280 355 293Q345 308 348 326Q332 333 324 350Q306 346 290 354Q278 341 260 338Q259 320 245 307Q255 292 252 274Q268 267 276 250Q294 254 310 246"></path>
+<path stroke-width="2" d="M320 192Q344 219 380 224Q383 260 409 285Q391 316 397 352 M280 408Q256 381 220 376Q217 340 191 315Q209 284 203 248Q236 233 252 201Q288 209 320 192"></path>
+<path stroke-width="2" d="M330 133Q367 175 423 183Q428 238 468 277 M177 417Q172 362 132 323Q160 275 150 219Q202 197 226 147Q281 159 330 133"></path>
+<path stroke-width="2" d="M341 74Q391 131 466 141Q473 217 528 269 M72 331Q111 266 98 191Q167 161 200 93Q274 109 341 74"></path>
+</g>
+<g class="sway">
+<path d="M330 300 Q 345 380 330 470" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="330" cy="478" r="11" fill="#D7141E" stroke="#000000" stroke-width="3"></circle>
+</g>
+<circle cx="300" cy="300" r="30" fill="#D7141E" stroke="#000000" stroke-width="4"></circle>
+<text x="300" y="311" text-anchor="middle" fill="#FFFFFF" font-family="Bangers, cursive" font-size="28" letter-spacing="1">LS</text>
+</svg>
+</div>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

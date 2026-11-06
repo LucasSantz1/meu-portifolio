@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Estudo de caso — Inspetor de E-mails</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&amp;family=Archivo:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFFFFF;font-family:'Archivo',system-ui,sans-serif}
+.cs{--ink:#000000;--accent:#D7141E;--accent2:#FFE24A;--navy:#12307A;--sky:#8FB8FF;color:#000000;background:#FFFFFF;overflow-x:clip}
+.cs a{color:#000000}
+.cs a:hover{color:#D7141E}
+.cs a:focus-visible{outline:3px solid #FFE24A;outline-offset:3px}
+.mono{font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace}
+.bang{font-family:'Bangers',cursive;font-weight:400;letter-spacing:.02em}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+.cap{margin:0;align-self:flex-start;background:#FFE24A;border:3px solid #000000;box-shadow:4px 4px 0 #000000;padding:8px 14px;font-weight:700;font-size:16px;rotate:-1.2deg}
+.btn{transition:translate .12s ease-out,box-shadow .12s ease-out}
+.btn:hover{translate:-2px -2px;box-shadow:7px 7px 0 #000000 !important}
+.btn:active{translate:4px 4px;box-shadow:0 0 0 #000000 !important}
+.sec-h{margin:0;font-size:80px;line-height:.9}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;position:relative}
+.flow-step{position:relative;padding:28px 26px 26px;border:4px solid #000000;background:#FFFFFF;display:flex;flex-direction:column;gap:10px}
+.flow-step + .flow-step{border-left:0}
+.flow-n{width:40px;height:40px;border-radius:50%;background:#000000;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Bangers',cursive;font-size:22px}
+.log{position:relative;margin:0;padding:0 0 0 46px;list-style:none;display:flex;flex-direction:column;gap:26px}
+.log::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:3px;background:#000000}
+.log li{position:relative}
+.log li::before{content:"";position:absolute;left:-41px;top:4px;width:22px;height:22px;border-radius:50%;background:#D7141E;border:3px solid #000000;box-sizing:border-box}
+.log .msg{font-size:15px;font-weight:700}
+.log .tp{color:#D7141E}
+.log .why{margin:6px 0 0;font-size:16px;line-height:1.55;max-width:62ch}
+@supports (animation-timeline: view()){
+.rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+}
+@keyframes rise{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+@media (max-width: 900px){
+.stack-sm{grid-template-columns:minmax(0,1fr) !important}
+.flow{grid-template-columns:minmax(0,1fr)}
+.flow-step + .flow-step{border-left:4px solid #000000;border-top:0}
+.title{font-size:72px !important}
+.sec-h{font-size:56px}
+.pad{padding:32px 20px !important}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+
+<div class="cs">
+<div style="max-width: 1280px; margin: 0 auto; padding: 24px 24px 120px; display: flex; flex-direction: column; gap: 110px">
+
+<nav aria-label="Navegação" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; font-weight: 800; font-size: 17px; text-decoration: none">
+<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#000000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+Voltar ao portfólio
+</a>
+<span class="mono" style="font-size: 14px">~/lucas/projetos/inspetor-emails/</span>
+</nav>
+
+<header class="pad stack-sm" style="position: relative; overflow: hidden; background: #12307A; color: #FFFFFF; border: 4px solid #000000; box-shadow: 10px 10px 0 #000000; padding: 56px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: radial-gradient(#8FB8FF 1.6px, transparent 1.8px); background-size: 12px 12px; opacity: .5; -webkit-mask-image: radial-gradient(circle at 100% 0%, #000000 0%, transparent 55%); mask-image: radial-gradient(circle at 100% 0%, #000000 0%, transparent 55%)"></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 22px">
+<p class="cap" style="color: #000000">Estudo de caso</p>
+<h1 class="bang title" style="margin: 0; font-size: 116px; line-height: .88; color: #FFFFFF; -webkit-text-stroke: 3px #000000; text-shadow: 7px 7px 0 #D7141E">Inspetor de E-mails</h1>
+<p style="margin: 0; font-size: 21px; line-height: 1.5; max-width: 46ch">Um cliente de e-mail web que aponta golpes e phishing antes de alguém clicar. Código aberto, para rodar no servidor da própria empresa.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a class="btn" href="[LINK DA DEMO]" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 20px; background: #D7141E; color: #FFFFFF; border: 3px solid #000000; box-shadow: 5px 5px 0 #000000; font-family: 'Bangers', cursive; font-size: 23px; letter-spacing: .04em; text-decoration: none">Ver demo</a>
+<a class="btn" href="https://github.com/LucasSantz1/inspetor-emails" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 20px; background: #FFFFFF; color: #000000; border: 3px solid #000000; box-shadow: 5px 5px 0 #000000; font-family: 'Bangers', cursive; font-size: 23px; letter-spacing: .04em; text-decoration: none">Repositório</a>
+</div>
+</div>
+<dl class="mono" style="position: relative; margin: 0; background: #000000; border: 3px solid #FFFFFF; padding: 22px 24px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px 18px; font-size: 14px; rotate: 1.5deg">
+<dt style="color: #FFE24A">papel</dt><dd style="margin: 0">autor, do zero</dd>
+<dt style="color: #FFE24A">status</dt><dd style="margin: 0">em desenvolvimento, sempre aberto</dd>
+<dt style="color: #FFE24A">licença</dt><dd style="margin: 0">código aberto</dd>
+<dt style="color: #FFE24A">stack</dt><dd style="margin: 0">[STACK DO PROJETO]</dd>
+<dt style="color: #FFE24A">para</dt><dd style="margin: 0">imobiliárias e outros negócios que usam CRM</dd>
+</dl>
+</header>
+
+<section class="stack-sm" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center">
+<div class="rise" style="display: flex; flex-direction: column; gap: 18px">
+<p class="cap">O problema…</p>
+<h2 class="bang sec-h">Golpe com cara de cliente</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; max-width: 52ch">Imobiliárias recebem e-mails de clientes, portais e bancos o dia inteiro. No meio deles chegam golpes que imitam essas mensagens, e basta um clique errado para expor dados ou dinheiro.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; max-width: 52ch">A ideia do Inspetor é que o alerta apareça na própria caixa de entrada, antes da pessoa abrir o link.</p>
+</div>
+<figure class="rise" style="margin: 0; background: #FFFFFF; border: 3px solid #000000; box-shadow: 10px 10px 0 #D7141E; rotate: -1.5deg">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 3px solid #000000">
+<span class="bang" style="font-size: 26px">Caixa de entrada</span>
+<span style="font-size: 14px; font-weight: 700">ilustração</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 14px 16px; border-bottom: 2px solid #000000">
+<span style="font-weight: 800; font-size: 15px">Marina Alves</span><span style="font-size: 13px; color: #3D3D3D">09:12</span>
+<span style="font-size: 14px; color: #3D3D3D">Visita ao apartamento da Rua das Flores</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 16px; background: #FFE24A">
+<span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap"><span style="font-weight: 800; font-size: 15px">suporte@banco-atualiza.net</span><span style="background: #000000; color: #FFFFFF; font-size: 12px; font-weight: 800; padding: 3px 8px; border-radius: 999px">Possível golpe</span></span><span style="font-size: 13px; color: #3D3D3D">08:47</span>
+<span style="font-size: 14px; font-weight: 600">Atualize seus dados bancários em até 24 horas</span>
+</div>
+</figure>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 32px">
+<div class="rise" style="display: flex; flex-direction: column; gap: 18px">
+<p class="cap">Como funciona…</p>
+<h2 class="bang sec-h">Do servidor ao alerta</h2>
+</div>
+<ol class="flow rise" style="list-style: none; margin: 0; padding: 0">
+<li class="flow-step"><span class="flow-n">1</span><span class="bang" style="font-size: 32px">A mensagem chega</span><span style="font-size: 16px; line-height: 1.55">O Inspetor roda no servidor da empresa e recebe os e-mails como um webmail comum.</span></li>
+<li class="flow-step" style="background: #12307A; color: #FFFFFF"><span class="flow-n" style="background: #D7141E; border: 2px solid #000000">2</span><span class="bang" style="font-size: 32px">É analisada</span><span style="font-size: 16px; line-height: 1.55">Cada mensagem passa pela verificação de golpe e phishing antes de ser mostrada.</span></li>
+<li class="flow-step"><span class="flow-n">3</span><span class="bang" style="font-size: 32px">Vem com aviso</span><span style="font-size: 16px; line-height: 1.55">O que parece golpe aparece marcado na caixa de entrada, à vista de quem vai abrir.</span></li>
+</ol>
+</section>
+
+<section class="stack-sm" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 56px; align-items: start">
+<div class="rise" style="display: flex; flex-direction: column; gap: 18px; position: sticky; top: 40px">
+<p class="cap">Decisões de engenharia…</p>
+<h2 class="bang sec-h">O histórico das escolhas</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; max-width: 40ch">Cada decisão contada como um commit: o que mudou e por quê.</p>
+</div>
+<ol class="log mono rise">
+<li><span class="msg"><span class="tp">feat(auth):</span> login próprio, com usuário e senha</span><p class="why" style="font-family: 'Archivo', sans-serif">O admin cadastra cada pessoa, sem link de convite. Acesso simples como um webmail, e controle na mão de quem administra.</p></li>
+<li><span class="msg"><span class="tp">feat(auth):</span> 2FA opcional</span><p class="why" style="font-family: 'Archivo', sans-serif">Quem quiser mais segurança ativa a verificação em duas etapas; quem não quiser não fica travado.</p></li>
+<li><span class="msg"><span class="tp">refactor(config):</span> tudo num menu só</span><p class="why" style="font-family: 'Archivo', sans-serif">Configurações agrupadas num menu lateral com seções, em vez de janelas espalhadas. Mais fácil para quem vai usar no dia a dia.</p></li>
+<li><span class="msg"><span class="tp">docs(seguranca):</span> LGPD e normas ISO</span><p class="why" style="font-family: 'Archivo', sans-serif">E-mail carrega dado pessoal. A segurança do projeto segue o que a LGPD e as normas ISO recomendam.</p></li>
+<li><span class="msg"><span class="tp">chore:</span> código aberto, para sempre</span><p class="why" style="font-family: 'Archivo', sans-serif">O projeto é aberto e nunca tratado como pronto: sempre dá para melhorar e auditar.</p></li>
+<li><span class="msg"><span class="tp">chore(git):</span> uma branch e um pull request por entrega</span><p class="why" style="font-family: 'Archivo', sans-serif">Cada correção ou sprint vira um PR revisado antes de entrar na main.</p></li>
+</ol>
+</section>
+
+<section class="rise stack-sm" style="position: relative; background: #FFE24A; border: 4px solid #000000; box-shadow: 10px 10px 0 #000000; padding: 44px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p class="mono" style="margin: 0; font-size: 14px; font-weight: 700">git checkout -b proximos-passos</p>
+<h2 class="bang" style="margin: 0; font-size: 64px; line-height: .92">Continua…</h2>
+</div>
+<ul style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.5">
+<li>Rodar no servidor próprio, com a Vercel só como opção de deploy.</li>
+<li>Abrir para outros segmentos que usam CRM, além das imobiliárias.</li>
+</ul>
+</section>
+
+<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; border-top: 4px solid #000000; padding-top: 24px">
+<a href="Main.dc.html" style="font-weight: 800; font-size: 17px; min-height: 44px; display: inline-flex; align-items: center">Voltar ao portfólio</a>
+<a class="btn" href="https://github.com/LucasSantz1/inspetor-emails" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 18px; background: #000000; color: #FFFFFF; border: 3px solid #000000; box-shadow: 4px 4px 0 #D7141E; font-family: 'Bangers', cursive; font-size: 21px; letter-spacing: .04em; text-decoration: none">Ver o código no GitHub</a>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3030}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

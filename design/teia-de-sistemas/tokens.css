@@ -1,0 +1,146 @@
+/*
+  Portfólio "Teia de Sistemas" — tokens de cor dos três temas.
+  Aplique data-theme="padrao" | "claro" | "escuro" no elemento raiz do site.
+  O tema padrão é o que abre por padrão.
+*/
+
+/* ---------- Tema padrão: vermelho, azul-noite e amarelo ---------- */
+[data-theme="padrao"] {
+  --bg: #FFFFFF;            /* fundo da página */
+  --paper: #FFFFFF;         /* superfície de painéis, balões e botões secundários */
+  --ink: #000000;           /* contornos, sombras duras, fios */
+  --text: #000000;
+  --muted: #3D3D3D;
+  --hero: #12307A;          /* fundo do hero */
+  --dots: #8FB8FF;          /* retícula (pontos de HQ) */
+  --web: #8FB8FF;           /* fios da teia do hero */
+  --web-in: #C9DCFF;        /* anéis internos da teia */
+  --web-shadow: rgba(0, 0, 0, .55); /* camada-sombra da teia 3D */
+  --spark: #FFE24A;         /* faíscas que correm pelos fios */
+  --node: #FFFFFF;          /* nós da teia */
+  --label-bg: #FFFFFF;      /* etiquetas das tecnologias */
+  --label-ink: #000000;
+  --label-hover: #FFE24A;
+  --label-hover-ink: #000000;
+  --accent: #D7141E;        /* cor de ação: botão principal, LS, barra do editor, alfinetes */
+  --on-accent: #FFFFFF;
+  --accent2: #FFE24A;       /* legendas de narração, destaques */
+  --on-accent2: #000000;
+  --alt: #12307A;           /* superfícies de destaque (cargo atual etc.) */
+  --on-alt: #FFFFFF;
+  --name-fill: #FFFFFF;     /* letreiro do nome */
+  --name-stroke: #000000;
+  --name-shadow: #D7141E;
+  --link-hover: #D7141E;
+  --intro-dots: #12307A;    /* retícula da tela preta da abertura */
+  --focus: #FFE24A;         /* anel de foco do teclado */
+  --flag: #FFE24A;          /* linha marcada como golpe na ilustração */
+  --bk1: #D7141E; --bk1-ink: #FFFFFF;   /* lombadas da estante */
+  --bk2: #FFFFFF; --bk2-ink: #000000;
+  --bk3: #FFE24A; --bk3-ink: #000000;
+  --bk4: #8FB8FF; --bk4-ink: #000000;
+  --ed-bg: #0E1F4F;         /* janela de editor (projetos, developer.ts) */
+  --ed-fg: #FFFFFF;
+  --ed-muted: #A9BDE3;
+  --ed-side: #12307A;       /* barra lateral e abas do editor */
+  --syn-key: #8FB8FF;       /* sintaxe: chaves de objeto, subtítulos ## */
+  --syn-str: #FFE24A;       /* sintaxe: strings */
+  --syn-kw: #FF9A9A;        /* sintaxe: palavras-chave, # */
+  --syn-com: #A9BDE3;       /* sintaxe: comentários */
+  --photo: #12307A;         /* fundo das fotos (polaroids) */
+  --photo-ink: #8FB8FF;
+}
+
+/* ---------- Tema claro: branco, rosa e ciano ---------- */
+[data-theme="claro"] {
+  --bg: #FFFFFF;
+  --paper: #FFFFFF;
+  --ink: #000000;
+  --text: #000000;
+  --muted: #3D3D3D;
+  --hero: #FFFFFF;
+  --dots: #FF5CA8;
+  --web: #000000;
+  --web-in: #E0177A;
+  --web-shadow: #2FD0E0;
+  --spark: #E0177A;
+  --node: #FFFFFF;
+  --label-bg: #FFFFFF;
+  --label-ink: #000000;
+  --label-hover: #FFC2DD;
+  --label-hover-ink: #000000;
+  --accent: #E0177A;
+  --on-accent: #FFFFFF;
+  --accent2: #FFC2DD;
+  --on-accent2: #000000;
+  --alt: #2FD0E0;
+  --on-alt: #000000;
+  --name-fill: #FFFFFF;
+  --name-stroke: #000000;
+  --name-shadow: #E0177A;
+  --link-hover: #E0177A;
+  --intro-dots: #5C0C33;
+  --focus: #2FD0E0;
+  --flag: #FFC2DD;
+  --bk1: #E0177A; --bk1-ink: #FFFFFF;
+  --bk2: #FFFFFF; --bk2-ink: #000000;
+  --bk3: #000000; --bk3-ink: #FFFFFF;
+  --bk4: #FFC2DD; --bk4-ink: #000000;
+  --ed-bg: #FFFFFF;
+  --ed-fg: #000000;
+  --ed-muted: #5A5A5A;
+  --ed-side: #E6FAFC;
+  --syn-key: #00788A;
+  --syn-str: #B3005C;
+  --syn-kw: #E0177A;
+  --syn-com: #6B6B6B;
+  --photo: #2FD0E0;
+  --photo-ink: #000000;
+}
+
+/* ---------- Tema escuro: preto e branco ---------- */
+[data-theme="escuro"] {
+  --bg: #000000;
+  --paper: #000000;
+  --ink: #FFFFFF;
+  --text: #FFFFFF;
+  --muted: #CFCFCF;
+  --hero: #000000;
+  --dots: #6B6B6B;
+  --web: #FFFFFF;
+  --web-in: #9C9C9C;
+  --web-shadow: #3A3A3A;
+  --spark: #FFFFFF;
+  --node: #000000;
+  --label-bg: #000000;
+  --label-ink: #FFFFFF;
+  --label-hover: #FFFFFF;
+  --label-hover-ink: #000000;
+  --accent: #FFFFFF;
+  --on-accent: #000000;
+  --accent2: #FFFFFF;
+  --on-accent2: #000000;
+  --alt: #262626;
+  --on-alt: #FFFFFF;
+  --name-fill: #000000;
+  --name-stroke: #FFFFFF;
+  --name-shadow: #FFFFFF;
+  --link-hover: #BDBDBD;
+  --intro-dots: #3A3A3A;
+  --focus: #FFFFFF;
+  --flag: #D9D9D9;
+  --bk1: #FFFFFF; --bk1-ink: #000000;
+  --bk2: #9C9C9C; --bk2-ink: #000000;
+  --bk3: #000000; --bk3-ink: #FFFFFF;
+  --bk4: #D9D9D9; --bk4-ink: #000000;
+  --ed-bg: #000000;
+  --ed-fg: #FFFFFF;
+  --ed-muted: #A3A3A3;
+  --ed-side: #1A1A1A;
+  --syn-key: #D9D9D9;
+  --syn-str: #FFFFFF;
+  --syn-kw: #FFFFFF;
+  --syn-com: #8A8A8A;
+  --photo: #262626;
+  --photo-ink: #9C9C9C;
+}
