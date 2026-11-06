@@ -14,58 +14,79 @@ Mostrar que eu domino front-end e back-end (regras de negócio, banco de dados e
 
 ## Seções (nesta ordem)
 
-1. **Topo (Hero):** nome, cargo, uma frase de apresentação e botões para GitHub, LinkedIn e Currículo (PDF). Embaixo, uma faixa com disponibilidade, cidade, hora local e idiomas.
-2. **01 Stack:** quatro colunas de ponta a ponta: Interface → Back-end e APIs → Dados → Qualidade e entrega.
-3. **02 Projetos:** metadados fixos à esquerda (tipo, status, período, links) e, à direita, a captura e o estudo de caso (Problema, Solução, Arquitetura, Decisões, Stack).
-4. **03 Sobre mim:** texto descontraído, os hobbies ("Fora do código": futebol, família e namorada, fé, leitura) e a "Estante" com os livros que já li.
-5. **04 Trajetória:** em formato de CHANGELOG, com cada emprego como uma versão. A v4.0.0 é a "próxima versão" (Desenvolvedor Full-Stack).
-6. **05 Formação:** formação, cursos e certificações, idiomas.
-7. **06 Contato:** faixa invertida com o e-mail em destaque e os links.
+O design é o pacote **"Teia de Sistemas"** em `design/teia-de-sistemas/`. Ele é a especificação completa: textos, medidas, animações e prévias.
+
+0. **Abertura:** cortina preta em que o fio desce e a teia se tece no "LS". Aparece só na primeira visita da sessão.
+1. **Topo (Hero):** legenda, nome em letreiro, balão de fala, botões (Currículo, GitHub, LinkedIn) e a teia 3D com a stack nos nós.
+2. **Projetos:** janela de editor com uma aba por projeto, mostrando o README (Problema, Arquitetura, Decisões), os tópicos e o preview ilustrado.
+3. **Stack:** `developer.ts` com a stack e um terminal com formação e certificados.
+4. **Trajetória:** 5 quadros numerados. O atual fica em destaque.
+5. **Fora do código:** o texto, as 4 polaroids e a estante, que só aparece quando `livros` tem itens.
+6. **Contato:** `contato.exe`, que monta um `mailto:`, mais o e-mail e os links.
+
+Por toda a página: o fio de progresso no topo, o fio da teia na lateral, que se desenha com a rolagem, e o botão de voltar ao topo. Há também a página 404 (`src/app/not-found.tsx`).
 
 ## Organização do código
 
 ```
 src/
   app/
-    layout.tsx        fontes Geist, metadados e o script que aplica o tema salvo antes de pintar
+    layout.tsx        fontes (Bangers, Archivo, JetBrains Mono), metadados e o script que aplica tema/abertura antes de pintar
     page.tsx          monta as seções na ordem
-    globals.css       tokens de cor (claro e escuro), utilitários (rotulo, titulo-display, moldura, cruz, grade-fundo)
+    not-found.tsx     página 404
+    globals.css       os 3 temas (tokens) e todo o CSS do design: HQ, teia 3D, abertura, rolagem
   conteudo/           TODO o texto do site, separado do layout
-    perfil.ts         nome, cargo, chamada, e-mail, links, foto, idiomas, texto "Sobre mim" e hobbies
-    projetos.ts       lista de projetos (tipo Projeto)
-    carreira.ts       stack de ponta a ponta, trajetória, formação, certificações e livros
-  componentes/        uma seção por arquivo (Hero, Stack, Projetos, Sobre, Trajetoria, Contato...)
-    Secao.tsx         moldura padrão das seções: linha de cima, cruzinhas e cabeçalho "NN / rótulo"
-    SeletorTema.tsx   automático / claro / escuro (client component, salva no localStorage)
-    Relogio.tsx       hora de Presidente Prudente (client component)
+    perfil.ts         nome, chamada, e-mail, links, painel "Agora", idiomas, tecnologias da teia, "Fora do código"
+    pagina.ts         legendas, títulos e textos fixos de cada parte, e os textos das ilustrações
+    projetos.ts       lista de projetos (tipo Projeto), fonte da verdade dos textos dos projetos
+    carreira.ts       stack (developer.ts), trajetória, formação, certificados e livros
+  componentes/        uma seção por arquivo (Hero, Projetos, Stack, Trajetoria, Sobre, Contato...)
+    Capitulo.tsx      cabeçalho de capítulo: teia presa ao fio, legenda e título
+    teia.ts           geometria da teia (usada na abertura, no topo e na 404)
+    mailto.ts         monta o link do contato (com teste em mailto.test.ts)
 public/
   curriculo-lucas-santanna.pdf
 ```
 
 - **Regra:** texto novo vai em `src/conteudo/`, nunca escrito direto nos componentes.
 - Nomes de variáveis, componentes e textos em **português**.
-- Só `SeletorTema` e `Relogio` são client components. O resto é renderizado no build.
+- **Client components:** `Abertura`, `SeletorTema`, `HeroInterativo` (teia segue o mouse), `EditorProjetos` (abas), `ContatoExe` e `VoltarAoTopo`. O resto é renderizado no build.
+- **Testes:** `npm test`.
 
 ## Design (manter)
 
-A base é o sistema de design da Vercel (Geist), com detalhes próprios. Não "suavizar" para um visual genérico.
+Siga o pacote `design/teia-de-sistemas/`, principalmente `docs/01-identidade-visual.md` e `tokens.css`. O conceito é uma HQ urbana em que uma teia liga tudo: front-end, back-end, banco e entrega.
 
-- **Fundo claro de papel** (`#fafafa`), tinta quase preta (`#171717`), texto `#4d4d4d`, linhas finas (`#ebebeb` / `#dedede`). O modo escuro segue o sistema ou o seletor.
-- **Uma única cor de destaque:** o verde-energia do meu projeto de Eficiência Energética (`#0a7356` no claro, `#3dbb8c` no escuro). Ele aparece **só** em links, no ponto de status, nos ✓ das decisões e na tag da próxima versão. Nunca como fundo de seção ou decoração.
-- **Tipografia:** Geist Sans para tudo, com títulos em peso 500 e espaçamento apertado. Geist Mono **só** em rótulos e metadados (utilitário `rotulo`: 12px, maiúsculas, espaçado), versões e tags de stack.
-- **Forma:** raio de 6px (4px nas tags), sem sombras. A separação é feita com linhas finas e espaço.
-- **Moldura de planta técnica:** linhas verticais nas laterais do conteúdo e cruzinhas (+) onde cada seção começa. A grade de fundo aparece só no topo, bem sutil.
-- **Faixa invertida** só no Contato, como fechamento.
-- **Evitar:** roxo/índigo, emoji como ícone, cards em tudo, faixa colorida na lateral de card, gradientes, animações de pulsar ou de aparecer ao rolar, palavra destacada em outra fonte ou cor dentro do título.
-- **Acessibilidade:** contraste AA nos dois temas, foco visível em verde, link "Pular para os projetos", respeitar `prefers-reduced-motion`.
-
-Referências usadas: Vercel/Geist (base), Linear (capturas em moldura fina), Raycast e os portfólios anoopsonkriya.dev e abhishek-kumar-t.vercel.app (carreira como changelog). As referências servem de inspiração. O site precisa continuar único e com a minha cara.
+- **Três temas** (`data-theme` no `<html>`):
+  - **padrão:** vermelho, azul-noite e amarelo;
+  - **claro:** rosa e ciano;
+  - **escuro:** preto e branco.
+  - Cores só pelos tokens.
+- **Quadrinho:** contorno de tinta de 3 a 4px, sombras duras sem desfoque, retícula de pontos, legendas amarelas de narração, balões e letreiro com contorno.
+- **Fontes:**
+  - Bangers nos títulos e botões;
+  - Archivo no texto;
+  - JetBrains Mono só onde é código de verdade.
+- **Movimento:** abertura, teia 3D, painéis que entram com a rolagem e o fio lateral. Tudo respeita `prefers-reduced-motion`.
+- **Nada de personagem:** nada de nome, símbolo, uniforme ou máscara de herói. Teia, retícula e linguagem de HQ são genéricas e podem ser usadas.
+- **Nada de dado inventado:** botão sem link (demo, repositório) não aparece, e itens pendentes (livros, fotos, música) ficam escondidos até existirem.
+- **Acessibilidade:**
+  - contraste 4.5:1;
+  - foco visível;
+  - alvos de 44px;
+  - abas com `role="tab"`;
+  - link "Pular para os projetos".
 
 ## Pendências
 
-- **Foto:** colocar em `public/` e preencher `foto` em `perfil.ts`. Hoje aparece um espaço com "LS".
-- **Livros da estante:** preencher `livros` em `carreira.ts`. Hoje aparece um aviso no lugar.
-- **Capturas dos projetos:** colocar em `public/projetos/` e preencher `imagem` em cada projeto. Hoje aparece "Captura em breve".
+A lista completa está em `design/teia-de-sistemas/docs/07-pendencias.md`. As principais:
+
+- **Fotos das polaroids:** colocar em `public/fotos/` e preencher `foto` em `sobre.polaroids` (`perfil.ts`). Hoje aparece um ícone no lugar.
+- **Livros da estante:** preencher `livros` em `carreira.ts`. Enquanto estiver vazio, a estante não aparece.
+- **Capturas dos projetos:** colocar em `public/projetos/` e preencher `imagem` em cada projeto. Hoje aparece a ilustração do preview.
+- **Links de verificação dos certificados:** preencher `link` em `certificados` (`carreira.ts`).
+- **Balão de música:** ainda não foi construído. Falta o arquivo de áudio, o nome da música e o artista.
+- **Estudo de caso do Inspetor:** a página não foi construída, porque faltam a stack e o repositório.
 - **Projetos:** os três atuais (Eficiência Energética, Monitor de Atendimentos, Inspetor de E-mails) são um ponto de partida. Vou criar projetos novos para o portfólio. O Monitor está sem link de repositório (repositório privado) e o Inspetor ainda está sem a stack.
 - **Links no ar:** nenhum projeto tem link de produção ainda.
 - **Currículo:** o PDF atual é o export do LinkedIn com o resumo antigo. Trocar pela versão atualizada.

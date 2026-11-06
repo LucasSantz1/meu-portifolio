@@ -17,6 +17,8 @@ export type Projeto = {
   repositorio?: string;
   imagem?: string;
   legendaImagem: string;
+  // Etiquetas em pílula embaixo do README, no editor de projetos.
+  topicos: string[];
 };
 
 export const projetos: Projeto[] = [
@@ -44,6 +46,7 @@ export const projetos: Projeto[] = [
     stack: ["TypeScript", "Next.js", "React", "Tailwind CSS", "Zustand", "Vitest", "Playwright", "GitHub Actions", "pnpm"],
     repositorio: "https://github.com/LucasSantz1/eficiencia-energetica",
     legendaImagem: "Captura da tela de resultado no celular",
+    topicos: ["gratuito", "dados-abertos", "typescript", "pwa"],
   },
   {
     slug: "monitor-atendimentos",
@@ -68,6 +71,7 @@ export const projetos: Projeto[] = [
     ],
     stack: ["JavaScript", "Chrome Extensions (MV3)", "Web Audio API", "IndexedDB", "HTML", "CSS"],
     legendaImagem: "Captura do popup com os cards monitorados",
+    topicos: ["extensão", "chrome", "edge"],
   },
   {
     slug: "inspetor-de-emails",
@@ -90,5 +94,6 @@ export const projetos: Projeto[] = [
     ],
     stack: [],
     legendaImagem: "Captura da caixa de entrada com um alerta de phishing",
+    topicos: ["código-aberto", "auto-hospedado", "2fa", "lgpd"],
   },
 ];

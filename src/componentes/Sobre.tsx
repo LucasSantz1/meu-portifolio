@@ -1,50 +1,106 @@
 import { livros } from "@/conteudo/carreira";
+import { pagina } from "@/conteudo/pagina";
 import { sobre } from "@/conteudo/perfil";
-import { Secao } from "./Secao";
+import { Capitulo } from "./Capitulo";
+
+// Ícones de traço que ficam na polaroid até chegar a foto real.
+const icones = {
+  bola: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7l4 3-1.5 4.5h-5L8 10z" />
+      <path d="M12 3v4M16 10l4.5-1.5M14.5 14.5l2.5 4M9.5 14.5l-2.5 4M8 10L3.5 8.5" />
+    </>
+  ),
+  coracao: <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />,
+  igreja: (
+    <>
+      <path d="M12 2v5M10 4h4" />
+      <path d="M6 21V11l6-4 6 4v10" />
+      <path d="M10 21v-4a2 2 0 0 1 4 0v4" />
+      <path d="M3 21h18" />
+    </>
+  ),
+  livro: (
+    <>
+      <path d="M3 5.5C5.5 4 9 4 12 6c3-2 6.5-2 9-.5V19c-2.5-1.5-6-1.5-9 .5-3-2-6.5-2-9-.5z" />
+      <path d="M12 6v13.5" />
+    </>
+  ),
+};
+
+// Cada polaroid tem a sua inclinação, lado de entrada e deslocamento, como no álbum do design.
+const album = [
+  { rot: "-3deg", fita: "-4deg", topo: 0, voo: "fly-l fd1" },
+  { rot: "2.5deg", fita: "5deg", topo: 30, voo: "fly-r fd2" },
+  { rot: "1.5deg", fita: "-2deg", topo: -10, voo: "fly-l fd2" },
+  { rot: "-2deg", fita: "3deg", topo: 20, voo: "fly-r fd3" },
+];
+
+const lombadas = [
+  { altura: "88%", rot: "-2deg", cor: 1 },
+  { altura: "74%", rot: "0deg", cor: 2 },
+  { altura: "100%", rot: "0deg", cor: 3 },
+  { altura: "82%", rot: "6deg", cor: 4 },
+];
 
 export function Sobre() {
+  const temLivros = livros.length > 0;
+
   return (
-    <Secao id="sobre" numero="03" rotulo="Sobre mim" titulo="Prazer, Lucas.">
-      <div className="grid gap-12 md:grid-cols-12 md:gap-8">
-        <div className="space-y-5 text-lg leading-relaxed text-body md:col-span-6 md:col-start-4">
-          {sobre.paragrafos.map((p) => (
-            <p key={p}>{p}</p>
-          ))}
+    <Capitulo id="sobre" legenda={pagina.sobre.legenda} titulo={pagina.sobre.titulo} entrada="fly-l">
+      <div className={`sobre-grade ${temLivros ? "" : "sem-estante"}`}>
+        <div className="flex flex-col gap-[34px]">
+          <p className="sobre-texto fly-r fd1">{sobre.texto}</p>
+          <div className="polaroids">
+            {sobre.polaroids.map((p, i) => {
+              const a = album[i % album.length];
+              return (
+                <figure key={p.legenda} className={`polaroid ${a.voo}`} style={{ rotate: a.rot, marginTop: temLivros ? a.topo : 0 }}>
+                  <span className="tape-bit" aria-hidden style={{ rotate: a.fita }} />
+                  <div className="photo">
+                    {p.foto ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={p.foto} alt={p.legenda} />
+                    ) : (
+                      <svg aria-hidden viewBox="0 0 24 24" fill="none" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                        {icones[p.icone]}
+                      </svg>
+                    )}
+                  </div>
+                  <figcaption>{p.legenda}</figcaption>
+                </figure>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      <div className="mt-16 grid gap-8 md:grid-cols-12">
-        <h3 className="rotulo text-muted md:col-span-3">Fora do código</h3>
-        <ul className="grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 md:col-span-9">
-          {sobre.foraDoCodigo.map((item) => (
-            <li key={item.titulo} className="bg-surface p-6">
-              <p className="font-medium text-ink">{item.titulo}</p>
-              <p className="mt-1.5 text-[15px]">{item.texto}</p>
-            </li>
-          ))}
-        </ul>
+        {/* Estante: só aparece quando houver livros em src/conteudo/carreira.ts. */}
+        {temLivros && (
+          <div className="estante fly-r fd1">
+            <h3>{pagina.sobre.estante}</h3>
+            <ul className="prateleira">
+              {livros.map((livro, i) => {
+                const l = lombadas[i % lombadas.length];
+                return (
+                  <li
+                    key={livro.titulo}
+                    className="lombada"
+                    title={`${livro.titulo}, de ${livro.autor}${livro.frase ? `: ${livro.frase}` : ""}`}
+                    style={{ height: l.altura, rotate: l.rot, background: `var(--bk${l.cor})` }}
+                  >
+                    <span style={{ color: `var(--bk${l.cor}-ink)` }}>{livro.titulo}</span>
+                    <span className="so-leitor">
+                      , de {livro.autor}
+                      {livro.frase ? `. ${livro.frase}` : ""}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
       </div>
-
-      <div className="mt-16 grid gap-8 md:grid-cols-12">
-        <h3 className="rotulo text-muted md:col-span-3">Estante</h3>
-        <div className="md:col-span-9">
-          {livros.length > 0 ? (
-            <ol className="divide-y divide-hairline border-y border-hairline">
-              {livros.map((livro, i) => (
-                <li key={livro.titulo} className="grid grid-cols-[3rem_1fr] items-baseline gap-4 py-4 sm:grid-cols-[3rem_1fr_auto]">
-                  <span className="font-mono text-xs text-muted">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="font-medium text-ink">{livro.titulo}</span>
-                  <span className="col-start-2 text-[15px] sm:col-start-auto">{livro.autor}</span>
-                </li>
-              ))}
-            </ol>
-          ) : (
-            <p className="rounded-md border border-dashed border-line px-6 py-8 text-[15px] text-muted">
-              Estou montando a lista dos livros que já li. Logo eles aparecem aqui.
-            </p>
-          )}
-        </div>
-      </div>
-    </Secao>
+    </Capitulo>
   );
 }

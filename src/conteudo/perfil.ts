@@ -2,36 +2,32 @@
 
 export const perfil = {
   nome: "Lucas Sant'Anna",
+  iniciais: "LS",
   cargo: "Desenvolvedor Full-Stack",
-  cidade: "Presidente Prudente, SP",
-  fusoHorario: "America/Sao_Paulo",
-  disponivel: true,
+  foco: "back-end",
+  cidade: "Presidente Prudente",
   chamada:
-    "Construo aplicações web de ponta a ponta, da modelagem do banco à interface, com foco em back-end, código organizado e testes.",
+    "Desenvolvedor full-stack com foco em back-end. Construo APIs, regras de negócio e bancos de dados que aguentam o uso real, e interfaces que não atrapalham quem usa.",
   email: "lucas.santannaa12@gmail.com",
   links: {
     github: "https://github.com/LucasSantz1",
     linkedin: "https://www.linkedin.com/in/lucas-santanna23",
     curriculo: "/curriculo-lucas-santanna.pdf",
   },
-  // Quando tiver a foto, coloque o arquivo em public/ (ex.: public/lucas.jpg) e escreva o caminho aqui.
-  foto: null as string | null,
-  idiomas: [
-    { idioma: "Português", nivel: "Nativo" },
-    { idioma: "Inglês", nivel: "Profissional" },
-    { idioma: "Espanhol", nivel: "Profissional" },
-  ],
+  // Painel "Agora" na lateral do editor de projetos.
+  agora: "Analista de Help Desk 3 na ImobiBrasil, construindo o Inspetor de E-mails nas horas livres.",
+  idiomas: ["português", "inglês", "espanhol"],
+  // As 12 tecnologias presas nos nós da teia 3D do topo (a ordem segue a posição dos nós).
+  teia: ["PHP", "Laravel", "Python", "Node.js", "MySQL", "React", "Next.js", "TypeScript", "Tailwind", "GitHub Actions", "Ruby", "JavaScript"],
 };
 
+// "Fora do código": o texto e as polaroids. Quando tiver a foto, coloque em public/fotos/ e preencha `foto`.
 export const sobre = {
-  paragrafos: [
-    "Sou o Lucas, tenho 23 anos e moro em Presidente Prudente, no interior de São Paulo. Me formei em Análise e Desenvolvimento de Sistemas pela Fatec e trabalho com tecnologia desde 2021.",
-    "Hoje atuo com suporte técnico em infraestrutura e sistemas, e é daí que vem boa parte dos meus projetos: eu vejo um problema que se repete no dia a dia e transformo em software. Gosto de entender bem o problema antes da primeira linha de código e de construir coisas que as pessoas usam sem precisar de manual.",
-  ],
-  foraDoCodigo: [
-    { titulo: "Futebol", texto: "Jogar bola é o meu jeito de desligar a cabeça." },
-    { titulo: "Família", texto: "O tempo com a minha família e com a minha namorada vem em primeiro lugar." },
-    { titulo: "Fé", texto: "Sou católico e participo da vida da minha igreja." },
-    { titulo: "Leitura", texto: "Sempre tem um livro em andamento. Alguns que já li estão logo abaixo." },
-  ],
+  texto: "Tenho 23 anos, moro em Presidente Prudente e falo inglês e espanhol. Quando desligo o computador, é aqui que eu estou:",
+  polaroids: [
+    { legenda: "Jogando bola com os amigos", icone: "bola", foto: null as string | null },
+    { legenda: "Com a família e a namorada", icone: "coracao", foto: null as string | null },
+    { legenda: "Na igreja", icone: "igreja", foto: null as string | null },
+    { legenda: "Lendo um livro", icone: "livro", foto: null as string | null },
+  ] as const,
 };

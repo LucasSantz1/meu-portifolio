@@ -1,83 +1,101 @@
-import { ArrowUpRight, FileText } from "lucide-react";
+import { pagina } from "@/conteudo/pagina";
 import { perfil } from "@/conteudo/perfil";
-import { Relogio } from "./Relogio";
+import { HeroInterativo } from "./HeroInterativo";
+import { anel1, anel2, anel3, anel4, anel5, nos, raiosLongos } from "./teia";
+
+// Teia 3D: seis camadas de SVG empilhadas em profundidade, com a stack nos nós e o LS no centro.
+function Teia3D() {
+  return (
+    <div className="web" role="img" aria-label={`${pagina.hero.descricaoTeia}: ${perfil.teia.join(", ")}`}>
+      <div className="web-drift">
+        <div className="web-tilt">
+          <svg className="web-layer" viewBox="0 0 600 600" aria-hidden style={{ transform: "translate(16px, 16px) translateZ(-110px)" }}>
+            <g className="c-wshadow" fill="none" strokeLinecap="round" strokeWidth="3">
+              <path d={raiosLongos} />
+              <path d={anel3} />
+              <path d={anel5} />
+            </g>
+          </svg>
+          <svg className="web-layer" viewBox="0 0 600 600" aria-hidden style={{ transform: "translateZ(-50px)" }}>
+            <g className="c-web" fill="none" strokeOpacity="0.55" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.6">
+              <path d={anel5} />
+              <path d={anel4} />
+            </g>
+          </svg>
+          <svg className="web-layer" viewBox="0 0 600 600" aria-hidden>
+            <g className="c-web" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              <path strokeWidth="2.5" d={raiosLongos} />
+              <path strokeWidth="1.8" d={anel3} />
+            </g>
+            <g className="c-spark" fill="none" strokeWidth="4" strokeLinecap="round">
+              {["M300 300L352 15", "M300 300L587 261", "M300 300L248 585", "M300 300L13 339"].map((d, i) => (
+                <path key={d} className="spark" pathLength={100} d={d} style={{ animationDelay: `${-0.8 * i}s` }} />
+              ))}
+            </g>
+          </svg>
+          <svg className="web-layer" viewBox="0 0 600 600" aria-hidden style={{ transform: "translateZ(45px)" }}>
+            <g className="c-webin" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2">
+              <path d={anel1} />
+              <path d={anel2} />
+            </g>
+          </svg>
+          <svg className="web-layer" viewBox="0 0 600 600" aria-hidden style={{ transform: "translateZ(80px)" }}>
+            <g className="c-node" strokeWidth="3">
+              {nos.map((n) => (
+                <circle key={`${n.cx}-${n.cy}`} cx={n.cx} cy={n.cy} r="7" />
+              ))}
+            </g>
+            <g className="c-lbl" fontWeight="700" fontSize="15">
+              {nos.map((n, i) => (
+                <g key={perfil.teia[i]} className="lbl">
+                  <rect x={n.x} y={n.y} width={n.w} height="28" rx="4" strokeWidth="2.5" />
+                  <text x={n.x + 9} y={n.y + 19}>
+                    {perfil.teia[i]}
+                  </text>
+                </g>
+              ))}
+            </g>
+          </svg>
+          <svg className="web-layer" viewBox="0 0 600 600" aria-hidden style={{ transform: "translateZ(130px)" }}>
+            <circle className="c-center" cx="300" cy="300" r="32" strokeWidth="4" />
+            <text className="c-centertxt" x="300" y="311" textAnchor="middle" fontSize="30" letterSpacing="1">
+              {perfil.iniciais}
+            </text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Hero() {
   return (
-    <section id="inicio" aria-labelledby="inicio-titulo" className="relative overflow-hidden">
-      <div aria-hidden className="grade-fundo pointer-events-none absolute inset-0" />
-      <div className="relative grid gap-12 px-6 pt-16 pb-16 md:grid-cols-12 md:gap-8 md:px-12 md:pt-28 md:pb-24">
-        <div className="md:col-span-8">
-          <p className="rotulo text-muted">{perfil.cargo}</p>
-          <h1 id="inicio-titulo" className="titulo-display mt-6 text-[3rem] sm:text-[4rem] lg:text-[5rem]">
-            {perfil.nome}
-          </h1>
-          <p className="mt-8 max-w-[34ch] text-xl leading-snug text-body md:text-2xl">{perfil.chamada}</p>
-
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a
-              href={perfil.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-10 items-center gap-1.5 rounded-md bg-ink px-4 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
-            >
-              GitHub
-              <ArrowUpRight aria-hidden size={16} strokeWidth={1.75} />
-            </a>
-            <a
-              href={perfil.links.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-10 items-center gap-1.5 rounded-md border border-line bg-surface px-4 text-sm font-medium text-ink transition-colors hover:border-faint"
-            >
-              LinkedIn
-              <ArrowUpRight aria-hidden size={16} strokeWidth={1.75} />
-            </a>
-            <a
-              href={perfil.links.curriculo}
-              download
-              className="inline-flex h-10 items-center gap-1.5 rounded-md border border-line bg-surface px-4 text-sm font-medium text-ink transition-colors hover:border-faint"
-            >
-              <FileText aria-hidden size={16} strokeWidth={1.75} />
-              Currículo (PDF)
-            </a>
-          </div>
+    <HeroInterativo>
+      <div aria-hidden className="hero-dots reticula" />
+      <div className="hero-texto">
+        <p className="cap pop-cedo">{pagina.hero.legenda}</p>
+        <h1 id="topo-titulo" className="hero-nome letreiro slam">
+          {perfil.nome}
+        </h1>
+        <div className="balao pop">
+          <svg aria-hidden viewBox="0 0 40 30" className="balao-rabo">
+            <path d="M4 29 L10 2 L36 29" strokeWidth="3" strokeLinejoin="round" />
+          </svg>
+          <p>{perfil.chamada}</p>
         </div>
-
-        <figure className="max-w-[15rem] md:col-span-4 md:max-w-none md:pt-10">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-line bg-surface">
-            {perfil.foto ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={perfil.foto} alt={`Foto de ${perfil.nome}`} className="size-full object-cover grayscale-[15%]" />
-            ) : (
-              <div className="grid size-full place-items-center">
-                <span aria-hidden className="titulo-display text-7xl text-hairline select-none">
-                  LS
-                </span>
-              </div>
-            )}
-          </div>
-          <figcaption className="rotulo mt-3 flex justify-between text-muted">
-            <span>{perfil.foto ? "Retrato" : "Foto em breve"}</span>
-            <span>4:5</span>
-          </figcaption>
-        </figure>
+        <div className="hero-botoes">
+          <a className="btn btn-acao" href={perfil.links.curriculo} download>
+            {pagina.hero.curriculo}
+          </a>
+          <a className="btn btn-papel" href={perfil.links.github} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a className="btn btn-papel" href={perfil.links.linkedin} target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+        </div>
       </div>
-
-      {/* Faixa de status: disponibilidade, cidade, hora local e idiomas. */}
-      <div className="relative border-t border-hairline">
-        <ul className="rotulo grid grid-cols-2 text-muted md:grid-cols-4">
-          <li className="flex items-center gap-2 border-r border-b border-hairline px-6 py-4 md:border-b-0 md:px-12">
-            <span aria-hidden className="size-2 rounded-full bg-accent" />
-            <span className="text-ink">{perfil.disponivel ? "Aberto a oportunidades" : "Ocupado no momento"}</span>
-          </li>
-          <li className="border-b border-hairline px-6 py-4 md:border-r md:border-b-0">{perfil.cidade}</li>
-          <li className="border-r border-hairline px-6 py-4">
-            <Relogio fuso={perfil.fusoHorario} />
-          </li>
-          <li className="px-6 py-4">PT · EN · ES</li>
-        </ul>
-      </div>
-    </section>
+      <Teia3D />
+    </HeroInterativo>
   );
 }

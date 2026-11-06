@@ -1,41 +1,116 @@
-import { stackPontaAPonta } from "@/conteudo/carreira";
-import { Secao } from "./Secao";
+import { certificados, formacao, stack } from "@/conteudo/carreira";
+import { pagina } from "@/conteudo/pagina";
+import { perfil } from "@/conteudo/perfil";
+import { Capitulo } from "./Capitulo";
 
-// A stack como um caminho: da interface até a entrega, cada etapa numa coluna.
-export function Stack() {
+const t = pagina.stack;
+
+function Lista({ itens }: { itens: string[] }) {
   return (
-    <Secao
-      id="stack"
-      numero="01"
-      rotulo="Stack"
-      titulo="De ponta a ponta, da tela ao deploy."
-      descricao="As ferramentas que uso em cada camada de uma aplicação. O back-end é onde me sinto mais em casa."
-    >
-      {/* gap-px com fundo de linha: as divisórias entre colunas saem sozinhas em qualquer largura. */}
-      <ol className="grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-        {stackPontaAPonta.map((camada, i) => (
-          <li key={camada.etapa} className="bg-surface p-6">
-            <p className="rotulo flex items-center justify-between text-muted">
-              <span className="text-ink">{String(i + 1).padStart(2, "0")}</span>
-              {i < stackPontaAPonta.length - 1 && (
-                <span aria-hidden className="hidden text-faint lg:inline">
-                  →
+    <>
+      [
+      {itens.map((item, i) => (
+        <span key={item}>
+          <span className="s">&quot;{item}&quot;</span>
+          {i < itens.length - 1 && ", "}
+        </span>
+      ))}
+      ]
+    </>
+  );
+}
+
+// As linhas do developer.ts, montadas a partir do conteúdo (perfil e carreira).
+function linhas(): React.ReactNode[] {
+  return [
+    <span key="c" className="cm">{t.comentario}</span>,
+    <span key="a">
+      <span className="kw">const</span> lucas = {"{"}
+    </span>,
+    <span key="cargo">
+      {"  "}<span className="k">cargo</span>: <span className="s">&quot;{perfil.cargo}&quot;</span>,
+    </span>,
+    <span key="foco">
+      {"  "}<span className="k">foco</span>: <span className="s">&quot;{perfil.foco}&quot;</span>,
+    </span>,
+    ...stack.map((camada) => (
+      <span key={camada.chave}>
+        {"  "}<span className="k">{camada.chave}</span>: <Lista itens={camada.itens} />,
+      </span>
+    )),
+    <span key="idiomas">
+      {"  "}<span className="k">idiomas</span>: <Lista itens={perfil.idiomas} />,
+    </span>,
+    <span key="f">{"};"}</span>,
+    <span key="v" />,
+    <span key="e">
+      <span className="kw">export default</span> lucas;
+    </span>,
+  ];
+}
+
+export function Stack() {
+  const resumo = `${perfil.cargo}, foco em ${perfil.foco}: ${stack.map((c) => `${c.chave} ${c.itens.join(", ")}`).join("; ")}.`;
+
+  return (
+    <Capitulo id="stack" legenda={t.legenda} titulo={t.titulo}>
+      <div className="stack-grade">
+        <div className="ide panel-l relative z-[1]">
+          <div className="ide-bar">
+            <span className="mono">developer.ts</span>
+          </div>
+          <div className="code mono" role="img" aria-label={`Objeto em TypeScript com a stack do Lucas. ${resumo}`}>
+            {linhas().map((conteudo, i) => (
+              <div key={i} className="ln">
+                <span className="ln-n">{i + 1}</span>
+                {conteudo}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="term-solto panel-r">
+          <div className="term-win">
+            <div className="term-bar mono">
+              <span>bash</span>
+              <span>~/lucas</span>
+            </div>
+            <pre className="term-body mono">
+              <span className="p">$</span> whoami{"\n"}
+              lucas-santanna: {perfil.cargo.toLowerCase()}, foco em {perfil.foco}
+              {"\n\n"}
+              <span className="p">$</span> {t.terminalComando}
+              {"\n"}
+              <span className="ok">{t.terminalSaida}</span>
+              {"\n\n"}
+              <span className="p">$</span> cat formacao.txt{"\n"}
+              {formacao}
+              {"\n\n"}
+              <span className="p">$</span> ls certificados/
+              {certificados.map((c) => (
+                <span key={c.arquivo}>
+                  {"\n"}
+                  {c.arquivo.padEnd(30)}
+                  {c.link && (
+                    <a href={c.link} target="_blank" rel="noreferrer">
+                      verificar
+                    </a>
+                  )}
                 </span>
-              )}
-            </p>
-            <h3 className="mt-6 text-xl font-medium tracking-tight">{camada.etapa}</h3>
-            <p className="mt-1 text-sm text-muted">{camada.descricao}</p>
-            <ul className="mt-5 space-y-2 text-[15px]">
-              {camada.itens.map((item) => (
-                <li key={item} className="flex items-center gap-2.5">
-                  <span aria-hidden className="h-px w-3 bg-faint" />
-                  {item}
-                </li>
               ))}
-            </ul>
-          </li>
-        ))}
-      </ol>
-    </Secao>
+              {"\n\n"}
+              <span className="p">$</span> <span className="cursor" aria-hidden />
+            </pre>
+          </div>
+          <p className="note hide-sm" aria-hidden>
+            <svg viewBox="0 0 60 40" width="60" height="40" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M56 34 C40 34 22 26 10 8" />
+              <path d="M4 16 L10 6 L20 10" />
+            </svg>
+            {t.nota}
+          </p>
+        </div>
+      </div>
+    </Capitulo>
   );
 }
