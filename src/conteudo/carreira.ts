@@ -9,13 +9,21 @@ export const stack = [
   { chave: "entrega", itens: ["Git", "GitHub Actions", "pnpm"] },
 ];
 
-// Os 5 quadros da trajetória. `atual: true` é o quadro em destaque.
-export const trajetoria = [
-  { periodo: "2021–2022", titulo: "Jovem Aprendiz", texto: "Grupo Energisa. ERP, relatórios e dashboards em Excel e Power BI." },
-  { periodo: "2022–2025", titulo: "Graduação em ADS", texto: "Fatec Presidente Prudente. Primeira versão do Sistema de Eficiência Energética." },
-  { periodo: "2023–2024", titulo: "Estagiário", texto: "Sanna Distribuidora. ERP, pedidos e rotas logísticas." },
-  { periodo: "2024–2025", titulo: "Help Desk 1 e 2", texto: "ImobiBrasil. Domínios, DNS, e-mail, cPanel e integrações com portais." },
-  { periodo: "2025–hoje", titulo: "Analista de Help Desk 3", texto: "ImobiBrasil. Incidentes complexos, infraestrutura e serviços críticos.", atual: true },
+// Os 5 quadros da página de HQ da trajetória.
+// `som`: onomatopeia na explosão amarela. `legenda`: caixa de narração. `balao`: fala no quadro.
+// `atual: true` é o quadro grande, que ocupa a altura toda da página.
+export const trajetoria: { periodo: string; titulo: string; texto: string; som?: string; legenda?: string; balao?: string; atual?: boolean }[] = [
+  { periodo: "2021–2022", titulo: "Jovem Aprendiz", texto: "Grupo Energisa. ERP, relatórios e dashboards em Excel e Power BI.", som: "CTRL+S!", legenda: "Onde tudo começou…" },
+  { periodo: "2022–2025", titulo: "Graduação em ADS", texto: "Fatec Presidente Prudente. Primeira versão do Sistema de Eficiência Energética.", som: "TCC!" },
+  { periodo: "2023–2024", titulo: "Estagiário", texto: "Sanna Distribuidora. ERP, pedidos e rotas logísticas.", som: "ROTA!" },
+  { periodo: "2024–2025", titulo: "Help Desk 1 e 2", texto: "ImobiBrasil. Domínios, DNS, e-mail, cPanel e integrações com portais.", som: "PING!" },
+  {
+    periodo: "2025–hoje",
+    titulo: "Analista de Help Desk 3",
+    texto: "ImobiBrasil. Incidentes complexos, infraestrutura e serviços críticos.",
+    balao: "Próxima parada: desenvolvedor full-stack.",
+    atual: true,
+  },
 ];
 
 export const formacao = "ADS, Fatec Presidente Prudente (2022–2025)";

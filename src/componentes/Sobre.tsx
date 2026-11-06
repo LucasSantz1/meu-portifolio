@@ -56,7 +56,16 @@ export function Sobre() {
             {sobre.polaroids.map((p, i) => {
               const a = album[i % album.length];
               return (
-                <figure key={p.legenda} className={`polaroid ${a.voo}`} style={{ rotate: a.rot, marginTop: temLivros ? a.topo : 0 }}>
+                <figure key={p.legenda} className={`pendurada ${a.voo}`} style={{ marginTop: temLivros ? a.topo : 0 }}>
+                  <svg className="no-teia" viewBox="0 0 34 34" aria-hidden>
+                    <g fill="none" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17 17L17 0M17 17L2 4M17 17L32 4M17 17L0 20M17 17L34 20" />
+                      <path d="M9 10Q17 6 25 10M5 15Q17 9 29 15" />
+                    </g>
+                    <circle cx="17" cy="17" r="4" strokeWidth="2" />
+                  </svg>
+                  <div className="polaroid" style={{ "--rot": a.rot, "--atraso": `${-i * 1.4}s` } as React.CSSProperties}>
+                  <span className="polaroid-fio" aria-hidden />
                   <span className="tape-bit" aria-hidden style={{ rotate: a.fita }} />
                   <div className="photo">
                     {p.foto ? (
@@ -69,6 +78,7 @@ export function Sobre() {
                     )}
                   </div>
                   <figcaption>{p.legenda}</figcaption>
+                  </div>
                 </figure>
               );
             })}
