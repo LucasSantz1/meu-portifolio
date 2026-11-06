@@ -5,6 +5,7 @@ import { Hero } from "@/componentes/Hero";
 import { Projetos } from "@/componentes/Projetos";
 import { Sobre } from "@/componentes/Sobre";
 import { Stack } from "@/componentes/Stack";
+import { TransicaoTeia } from "@/componentes/TransicaoTeia";
 import { Trajetoria } from "@/componentes/Trajetoria";
 import { VoltarAoTopo } from "@/componentes/VoltarAoTopo";
 
@@ -20,7 +21,7 @@ export default function Inicio() {
       <div className="progress" aria-hidden />
       <Abertura />
       <Cabecalho />
-      <main className="mx-auto max-w-[1280px] px-6 pt-6 pb-[140px]">
+      <main className="px-[var(--borda-pagina)] pt-6 pb-[140px]">
         <Hero />
         <div className="story">
           <div className="story-thread" aria-hidden>
@@ -35,6 +36,7 @@ export default function Inicio() {
         <Rodape />
       </main>
       <VoltarAoTopo />
+      <TransicaoTeia />
     </>
   );
 }

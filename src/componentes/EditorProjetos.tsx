@@ -204,7 +204,7 @@ export function EditorProjetos() {
             <p>{perfil.agora}</p>
           </div>
         </nav>
-        <div id="painel-projeto" className="ide-main" role="tabpanel" aria-labelledby={`aba-${projeto.slug}`}>
+        <div key={projeto.slug} id="painel-projeto" className="ide-main vira-pagina" role="tabpanel" aria-labelledby={`aba-${projeto.slug}`}>
           <Readme projeto={projeto} />
           <div>
             <p className="preview-label mono">{t.previa}</p>

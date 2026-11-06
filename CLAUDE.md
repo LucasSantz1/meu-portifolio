@@ -50,7 +50,7 @@ public/
 
 - **Regra:** texto novo vai em `src/conteudo/`, nunca escrito direto nos componentes.
 - Nomes de variáveis, componentes e textos em **português**.
-- **Client components:** `Abertura`, `SeletorTema`, `HeroInterativo` (teia segue o mouse), `EditorProjetos` (abas), `ContatoExe` e `VoltarAoTopo`. O resto é renderizado no build.
+- **Client components:** `Abertura`, `SeletorTema`, `HeroInterativo` (teia segue o mouse), `EditorProjetos` (abas), `ContatoExe`, `VoltarAoTopo` e `TransicaoTeia` (a teia que cobre a tela e a seção que desenrola ao navegar pelo menu). O resto é renderizado no build.
 - **Testes:** `npm test`.
 
 ## Design (manter)

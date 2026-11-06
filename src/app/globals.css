@@ -48,7 +48,7 @@
 }
 
 /* Atraso das entradas do topo: espera a cortina da abertura subir (0s quando ela não aparece). */
-:root { --d: 2.35s; }
+:root { --d: 2.35s; --borda-pagina: clamp(24px, 4vw, 80px); --tam-teia: clamp(600px, 42vw, 860px); }
 :root[data-intro="vista"] { --d: 0s; }
 
 @theme inline {
@@ -97,12 +97,12 @@
   border: 3px solid #000000; box-shadow: 4px 4px 0 #000000; padding: 8px 14px;
   font-weight: 700; font-size: 16px; rotate: -1.2deg;
 }
-.sec-title { margin: 0; font-family: var(--f-hq), cursive; font-weight: 400; font-size: 104px; line-height: .9; letter-spacing: .02em; }
+.sec-title { margin: 0; font-family: var(--f-hq), cursive; font-weight: 400; font-size: clamp(60px, 7.2vw, 140px); line-height: .9; letter-spacing: .02em; }
 .letreiro { color: var(--name-fill); -webkit-text-stroke: 3px var(--name-stroke); text-shadow: 7px 7px 0 var(--name-shadow); }
 .reticula { background-image: radial-gradient(var(--dots) 1.6px, transparent 1.8px); background-size: 12px 12px; }
 
 /* ---------- Cabeçalho e seletor de tema ---------- */
-.cabecalho { max-width: 1280px; margin: 0 auto; padding: 24px 24px 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.cabecalho { padding: 24px var(--borda-pagina) 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
 .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .disco { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); border: 3px solid var(--ink); display: flex; align-items: center; justify-content: center; font-family: var(--f-hq), cursive; font-size: 24px; color: var(--on-accent); letter-spacing: .02em; }
 .menu { display: flex; flex-wrap: wrap; gap: 4px 20px; font-weight: 700; font-size: 16px; }
@@ -116,19 +116,19 @@
 /* ---------- Hero e teia 3D ---------- */
 .hero {
   position: relative; overflow: hidden; background: var(--hero); border: 4px solid var(--ink); box-shadow: 10px 10px 0 var(--ink);
-  padding: 64px 56px; min-height: 640px; --hx: 0; --hy: 0; --rx: 0deg; --ry: 0deg;
+  padding: 64px 56px; min-height: max(640px, calc(var(--tam-teia) + 40px)); --hx: 0; --hy: 0; --rx: 0deg; --ry: 0deg;
 }
 .hero-dots { position: absolute; inset: -30px; opacity: .6; background-position: calc(var(--hx) * -28px) calc(var(--hy) * -28px); mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 55%); }
-.hero-texto { position: relative; z-index: 1; max-width: 640px; display: flex; flex-direction: column; gap: 28px; pointer-events: none; }
+.hero-texto { position: relative; z-index: 1; max-width: clamp(640px, 46vw, 900px); display: flex; flex-direction: column; gap: 28px; pointer-events: none; }
 .hero-texto .cap { font-size: 17px; padding: 10px 16px; rotate: 0deg; }
-.hero-nome { margin: 0; font-family: var(--f-hq), cursive; font-weight: 400; font-size: 132px; line-height: .9; letter-spacing: .02em; }
+.hero-nome { margin: 0; font-family: var(--f-hq), cursive; font-weight: 400; font-size: clamp(72px, 9.2vw, 180px); line-height: .9; letter-spacing: .02em; }
 .balao { position: relative; background: var(--paper); color: var(--text); border: 3px solid var(--ink); border-radius: 28px; padding: 22px 26px; max-width: 540px; margin-top: 12px; }
 .balao p { margin: 0; font-size: 20px; line-height: 1.45; font-weight: 500; }
 .balao-rabo { position: absolute; top: -26px; left: 56px; width: 40px; height: 30px; }
 .balao-rabo path { fill: var(--paper); stroke: var(--ink); }
 .hero-botoes { display: flex; flex-wrap: wrap; gap: 16px; pointer-events: auto; }
 
-.web { position: absolute; right: 8px; top: 16px; width: 600px; height: 600px; perspective: 1000px; }
+.web { position: absolute; right: 8px; top: 16px; width: var(--tam-teia); height: var(--tam-teia); perspective: 1000px; }
 .web-drift { transform-style: preserve-3d; animation: drift 14s ease-in-out infinite; width: 100%; height: 100%; }
 .web-tilt { transform-style: preserve-3d; transition: transform .18s ease-out; width: 100%; height: 100%; transform: rotateX(var(--rx)) rotateY(var(--ry)); }
 .web-layer { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
@@ -330,7 +330,7 @@ section:target .sec-title { animation: targetPop .7s .35s cubic-bezier(.2, .9, .
 .lombada span { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 800; font-size: 15px; max-height: 92%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ---------- Contato ---------- */
-.contato-titulo { font-size: 132px; color: var(--name-fill); -webkit-text-stroke: 3px var(--name-stroke); text-shadow: 7px 7px 0 var(--accent); }
+.contato-titulo { font-size: clamp(64px, 9.2vw, 180px); color: var(--name-fill); -webkit-text-stroke: 3px var(--name-stroke); text-shadow: 7px 7px 0 var(--accent); }
 .contato-grade { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 .contato-form { rotate: -1deg; margin: 0; }
 .campos { padding: 10px 22px 22px; font-size: 14px; }
@@ -362,13 +362,45 @@ section:target .sec-title { animation: targetPop .7s .35s cubic-bezier(.2, .9, .
 .nf { min-height: 100vh; background: #12307A; color: #FFFFFF; position: relative; overflow: hidden; display: flex; align-items: center; }
 .nf a:focus-visible { outline-color: #FFE24A; }
 .nf-dots { position: absolute; inset: 0; background-image: radial-gradient(#8FB8FF 1.6px, transparent 1.8px); background-size: 12px 12px; opacity: .45; mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 60%); }
-.nf-cols { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; padding: 48px 24px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
+.nf-cols { position: relative; width: 100%; padding: 48px var(--borda-pagina); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
 .nf-texto { display: flex; flex-direction: column; gap: 24px; }
 .nf-404 { margin: 0; font-family: var(--f-hq), cursive; font-weight: 400; font-size: 260px; line-height: .8; letter-spacing: .02em; color: #FFFFFF; -webkit-text-stroke: 4px #000000; text-shadow: 10px 10px 0 #D7141E; animation: slam .7s cubic-bezier(.2, .9, .3, 1.25) both; }
 .nf-frase { margin: 0; font-family: var(--f-hq), cursive; font-size: 48px; letter-spacing: .02em; line-height: 1; }
 .nf-term { margin: 0; align-self: flex-start; background: #000000; border: 3px solid #FFFFFF; padding: 12px 16px; font-size: 14px; line-height: 1.7; }
 .sway { transform-origin: 330px 300px; animation: sway 3.4s ease-in-out infinite; }
 @keyframes sway { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; } }
+
+/* ---------- Transição em teia entre seções ---------- */
+/* Fase 1 (cobre): a teia gira a partir do clique e o azul do topo se abre em círculo até cobrir a tela.
+   Fase 2 (revela): a folha enrola para cima, presa no topo, e a seção chega desenrolando em 3D. */
+.teia-trans { position: fixed; inset: 0; z-index: 95; pointer-events: none; perspective: 1400px; }
+.teia-trans-palco { position: absolute; inset: 0; transform-origin: 50% 0; transform-style: preserve-3d; }
+.teia-trans-fundo { position: absolute; inset: 0; background-color: var(--hero); border-bottom: 6px solid var(--ink); }
+.teia-trans-teia { position: absolute; left: var(--ox); top: var(--oy); width: max(140vmax, 1400px); height: max(140vmax, 1400px); translate: -50% -50%; overflow: visible; }
+.teia-trans-teia g { stroke: var(--web); }
+.teia-trans-centro { fill: var(--accent); stroke: var(--ink); }
+.cobre .teia-trans-fundo { animation: tt-abre .52s cubic-bezier(.7, 0, .25, 1) both; }
+.cobre .teia-trans-teia { animation: tt-gira .52s cubic-bezier(.2, .8, .3, 1) both; }
+.revela .teia-trans-palco { animation: tt-enrola .76s cubic-bezier(.7, 0, .25, 1) both; }
+@keyframes tt-abre { from { clip-path: circle(0% at var(--ox) var(--oy)); } to { clip-path: circle(150% at var(--ox) var(--oy)); } }
+@keyframes tt-gira { from { transform: rotateX(55deg) rotateZ(-140deg) scale(.08); opacity: 0; } 40% { opacity: 1; } to { transform: none; opacity: 1; } }
+@keyframes tt-enrola { from { transform: none; } 60% { opacity: 1; } to { transform: rotateX(95deg) translateY(-12%); opacity: 0; } }
+
+/* A seção de destino desenrola de cima, como uma folha pendurada no fio. */
+.desenrola { transform-origin: 50% 0; animation: desenrola .82s cubic-bezier(.2, .9, .3, 1.05) both; }
+@keyframes desenrola { from { transform: perspective(1400px) rotateX(-78deg); opacity: 0; } 55% { opacity: 1; } to { transform: none; opacity: 1; } }
+section[tabindex="-1"]:focus { outline: none; }
+
+/* Troca de projeto no editor: o README novo desenrola de cima. */
+.vira-pagina { transform-origin: 50% 0; animation: desenrola .55s cubic-bezier(.2, .9, .3, 1.05) both; }
+
+/* Navegação entre páginas (ex.: da 404 para o início): a página nova desenrola, a antiga recua para o fundo. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: tt-recua .4s cubic-bezier(.7, 0, .25, 1) both; }
+  ::view-transition-new(root) { transform-origin: 50% 0; animation: desenrola .8s .1s cubic-bezier(.2, .9, .3, 1.05) both; }
+}
+@keyframes tt-recua { to { transform: perspective(1400px) translateZ(-300px) rotateZ(-4deg); opacity: 0; } }
 
 /* ---------- Celular ---------- */
 @media (max-width: 900px) {
