@@ -85,7 +85,7 @@ A lista completa está em `design/teia-de-sistemas/docs/07-pendencias.md`. As pr
 - **Livros da estante:** preencher `livros` em `carreira.ts`. Enquanto estiver vazio, a estante não aparece.
 - **Capturas dos projetos:** colocar em `public/projetos/` e preencher `imagem` em cada projeto. Hoje aparece a ilustração do preview.
 - **Links de verificação dos certificados:** preencher `link` em `certificados` (`carreira.ts`).
-- **Balão de música:** ainda não foi construído. Falta o arquivo de áudio, o nome da música e o artista.
+- **Balão de música:** já está pronto e aparece sozinho quando existir `public/musica/sunflower.mp3` (nome e artista em `pagina.ts`). Antes de publicar, confira se você pode usar a música num site público.
 - **Estudo de caso do Inspetor:** a página não foi construída, porque faltam a stack e o repositório.
 - **Projetos:** os três atuais (Eficiência Energética, Monitor de Atendimentos, Inspetor de E-mails) são um ponto de partida. Vou criar projetos novos para o portfólio. O Monitor está sem link de repositório (repositório privado) e o Inspetor ainda está sem a stack.
 - **Links no ar:** nenhum projeto tem link de produção ainda.

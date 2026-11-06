@@ -1,4 +1,5 @@
 import { Abertura } from "@/componentes/Abertura";
+import { BalaoMusica } from "@/componentes/BalaoMusica";
 import { Cabecalho } from "@/componentes/Cabecalho";
 import { Contato, Rodape } from "@/componentes/Contato";
 import { Hero } from "@/componentes/Hero";
@@ -11,7 +12,7 @@ import { VoltarAoTopo } from "@/componentes/VoltarAoTopo";
 
 export default function Inicio() {
   return (
-    <>
+    <div className="site">
       <a
         href="#projetos"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[110] focus:bg-[var(--accent2)] focus:px-3 focus:py-2 focus:font-bold focus:text-[var(--on-accent2)]"
@@ -36,7 +37,8 @@ export default function Inicio() {
         <Rodape />
       </main>
       <VoltarAoTopo />
+      <BalaoMusica />
       <TransicaoTeia />
-    </>
+    </div>
   );
 }

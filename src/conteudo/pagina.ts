@@ -49,6 +49,13 @@ export const pagina = {
     campos: { nome: "seu nome", email: "voce@empresa.com", mensagem: "Conta o que você está construindo." },
   },
   rodape: "feito com teia e código",
+  // Balão de música no canto inferior esquerdo. Só aparece quando o arquivo existir em public/.
+  musica: {
+    arquivo: "/musica/sunflower.mp3",
+    nome: "Sunflower",
+    artista: "Post Malone e Swae Lee",
+    tocandoAgora: "Tocando agora",
+  },
   naoEncontrado: {
     legenda: "Ops…",
     frase: "Essa página escapou da teia.",
